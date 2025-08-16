@@ -11,15 +11,22 @@ templ head(title string) {
 }
 
 templ navbar() {
-<header class="bg-pink-500">
-	<ul>
+<header class="bg-blue-500 p-2 flex justify-between">
+	<h1>Welcome</h1>
+	<ul class="flex gap-4">
 		<li> <a href="/"> Home </a> </li>
+		<li> <a href="/docs"> docs </a> </li>
+		<li> <a href="/about"> about </a> </li>
+	</ul>
+	<ul class="flex gap-4">
+		<li> <a href="/"> Login </a> </li>
+		<li> <a href="/docs"> Register </a> </li>
 	</ul>
 </header>
 }
 
 templ footer() {
-<footer>
+<footer class="bg-blue-500 p-2">
 footer
 </footer>
 }
@@ -33,17 +40,18 @@ templ Layout(title string) {
 		<body>
 			@navbar()
 
-			{ children... }
+			<main class="p-4">
+						{ children... }
+			</main>
 
 			@footer()
 		</body>
 	</html>
 }
 
-templ Content_one(){
-	coucou
-}
-
-templ Content_two(){
-	coucouwa
+templ Home(){
+	<h1>Hello!</h1>
+	<p>
+	    i don't know ui nor graphic design sorry :(
+	</p>
 }
