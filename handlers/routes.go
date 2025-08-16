@@ -6,15 +6,14 @@ import (
 	"github.com/a-h/templ"
 )
 
-func render_templ(component templ.Component, title string) func(c echo.Context) error {
+func render_templ(Layout templ.Component, component templ.Component) func(c echo.Context) error {
 	return func(c echo.Context) error {
-		return views.Layout(title).Render( templ.WithChildren(c.Request().Context(), component), c.Response().Writer)
+		return Layout.Render( templ.WithChildren(c.Request().Context(), component), c.Response().Writer)
 	}
 }
 
 func SetupRoutes(e *echo.Echo){
-	e.GET("/", render_templ(views.Content_one(), "pipo"))
-	e.GET("/oh", render_templ(views.Content_two(), "pipoza"))
+	e.GET("/", render_templ(views.Layout("Home"), views.Home()))
 
 	// htmx := e.Group("/hx")
 	//
