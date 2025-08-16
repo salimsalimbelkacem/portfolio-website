@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/salimsalimbelkacem/gotth-contact-app/views"
+	"github.com/salimsalimbelkacem/idk-what-i-am-doing-at-this-point/views"
 	"github.com/a-h/templ"
 )
 

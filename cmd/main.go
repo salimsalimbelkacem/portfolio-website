@@ -1,9 +1,9 @@
 package main
 
 import (
-	// "github.com/salimsalimbelkacem/gotth-contact-app/views"
+	// "github.com/salimsalimbelkacem/idk-what-i-am-doing-at-this-point/views"
 	"github.com/labstack/echo/v4"
-	"github.com/salimsalimbelkacem/gotth-contact-app/handlers"
+	"github.com/salimsalimbelkacem/idk-what-i-am-doing-at-this-point/handlers"
 )
 
 
