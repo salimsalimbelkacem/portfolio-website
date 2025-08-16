@@ -10,34 +10,34 @@ templ head(title string) {
 		</head>
 }
 
-var navbar_elements map[string]string =
-map[string]string{
-	"/hx/home":"Home",
-	"/hx/about":"about",
-}
+var navbar_elements = []string{ "home", "about", "contacts",}
+
 
 templ navbar() {
-	<header class="bg-blue-500 p-2 flex justify-between">
+	<header class="bg-blue-900 p-2 flex justify-between">
 		<ul class="flex gap-4">
-		for hx_api_path, display_text := range navbar_elements {
-			<li>
-				<button type="button" hx-get={hx_api_path} hx-target="main">
-					{display_text}
-				</button>
-			</li>
-		}
 
-	</ul>
+			for _, display_text := range navbar_elements {
+				<li> 
+				<button type="button" 
+				hx-get={"/hx/" + display_text}
+				hx-target="main">
 
-		<ul class="flex gap-4">
-		<li> <a href="/"> Login </a> </li>
-		<li> <a href="/docs"> Register </a> </li>
+						{display_text}
+					</button>
+					</li>
+			}
 		</ul>
-		</header>
+
+		<ul class="flex gap-4">
+			<li> <a href="/"> Login </a> </li>
+			<li> <a href="/docs"> Register </a> </li>
+		</ul>
+	</header>
 }
 
 templ footer() {
-	<footer class="bg-blue-500 p-2">
+	<footer class="bg-blue-900 p-2">
 		footer
 		</footer>
 }
@@ -48,9 +48,9 @@ templ Layout(title string) {
 
 		@head(title)
 
-		<body class="min-h-screen flex flex-col">
+		<body class="min-h-screen flex flex-col dark:bg-gray-800 dark:text-white">
 		@navbar()
-		<main class="flex-1 p-4">
+		<main class="flex-1 p-4 transition-opacity delay-150 duration-300 ease-in-out">
 			{ children... }
 		</main>
 
