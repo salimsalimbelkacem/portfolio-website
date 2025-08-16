@@ -7,51 +7,55 @@ templ head(title string) {
 		<title>{title}</title>
 		<link rel="stylesheet" href="/static/style.css">
 		<script src="/static/htmx.min.js"> </script>
-	</head>
+		</head>
+}
+
+var navbar_elements map[string]string =
+map[string]string{
+	"/hx/home":"Home",
+	"/hx/about":"about",
 }
 
 templ navbar() {
-<header class="bg-blue-500 p-2 flex justify-between">
-	<h1>Welcome</h1>
-	<ul class="flex gap-4">
-		<li> <a href="/"> Home </a> </li>
-		<li> <a href="/docs"> docs </a> </li>
-		<li> <a href="/about"> about </a> </li>
+	<header class="bg-blue-500 p-2 flex justify-between">
+		<ul class="flex gap-4">
+		for hx_api_path, display_text := range navbar_elements {
+			<li>
+				<button type="button" hx-get={hx_api_path} hx-target="main">
+					{display_text}
+				</button>
+			</li>
+		}
+
 	</ul>
-	<ul class="flex gap-4">
+
+		<ul class="flex gap-4">
 		<li> <a href="/"> Login </a> </li>
 		<li> <a href="/docs"> Register </a> </li>
-	</ul>
-</header>
+		</ul>
+		</header>
 }
 
 templ footer() {
-<footer class="bg-blue-500 p-2">
-footer
-</footer>
+	<footer class="bg-blue-500 p-2">
+		footer
+		</footer>
 }
 
 templ Layout(title string) {
 	<!DOCTYPE html>
-	<html lang="en">
+		<html lang="en" class="min-h-screen flex flex-col">
 
 		@head(title)
 
-		<body>
-			@navbar()
+		<body class="min-h-screen flex flex-col">
+		@navbar()
+		<main class="flex-1 p-4">
+			{ children... }
+		</main>
 
-			<main class="p-4">
-						{ children... }
-			</main>
-
-			@footer()
+		@footer()
 		</body>
-	</html>
-}
 
-templ Home(){
-	<h1>Hello!</h1>
-	<p>
-	    i don't know ui nor graphic design sorry :(
-	</p>
+		</html>
 }

@@ -6,16 +6,19 @@ import (
 	"github.com/a-h/templ"
 )
 
-func render_templ(Layout templ.Component, component templ.Component) func(c echo.Context) error {
+func rendTempl(layout templ.Component, component templ.Component) func(c echo.Context) error {
 	return func(c echo.Context) error {
-		return Layout.Render( templ.WithChildren(c.Request().Context(), component), c.Response().Writer)
+		if layout != nil {
+			return layout.Render(templ.WithChildren(c.Request().Context(), component), c.Response().Writer)
+		}
+
+		return component.Render(c.Request().Context(), c.Response().Writer)
 	}
 }
 
-func SetupRoutes(e *echo.Echo){
-	e.GET("/", render_templ(views.Layout("Home"), views.Home()))
 
-	// htmx := e.Group("/hx")
-	//
-	// htmx.GET("/poupe")
+func SetupRoutes(e *echo.Echo){
+	e.GET("/", rendTempl(views.Layout("Home"), views.Home()))
+
+	setupHxRoutes(e)
 }
