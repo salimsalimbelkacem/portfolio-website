@@ -1,0 +1,7 @@
+node_modules
+pnpm-lock.yaml
+go.sum
+.overmind.sock
+tmp/
+*_templ.go
+static/style.css
