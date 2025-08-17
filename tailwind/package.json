@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch-css": "npx @tailwindcss/cli -i ./base.css -o ../static/style.css --watch=always --minify",
-    "gen-css": "npx @tailwindcss/cli -i ./base.css -o ../static/style.css --minify"
+    "watch-css": "pnpx @tailwindcss/cli -i ./base.css -o ../static/style.css --watch=always --minify",
+    "gen-css": "pnpx @tailwindcss/cli -i ./base.css -o ../static/style.css --minify"
   },
   "keywords": [],
   "author": "",
