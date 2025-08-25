@@ -1,4 +1,4 @@
-module github.com/salimsalimbelkacem/gotth-contact-app
+module github.com/salimsalimbelkacem/idk-what-i-am-doing-at-this-point
 
 go 1.24.6
 
