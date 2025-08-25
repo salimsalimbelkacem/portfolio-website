@@ -6,3 +6,4 @@ tmp/
 *_templ.go
 static/style.css
 bin/
+*.log
