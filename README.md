@@ -1,29 +1,23 @@
-# watever
 i don't want to justify what is this project and why, it is nothing for the moment,
 only me trying out golang and htmx
 
 # dependencies
-first of all this is a golang project so you need to [install golang](https://go.dev/dl/) 
+- `golang`
+- `npm` or `pnpm`
+- `make`
 
-make sure that the path of binaries installed with go is set in your os environment variables,
+> make sure to have the latest version of go
 
-## in windows
-you can add the path inside `environment variables`
+now these are optional and you can build the project without them, they are just nice
+to have for development
+- [air](https://github.com/air-verse/air) 
+- a procfile-based process manager like [foreman](https://github.com/ddollar/foreman)
+or [overmind](https://github.com/DarthSim/overmind) 
 
-## in macos/ linux
-depends on the shell you are using but here it is for the major ones
-### bash
-```bash
-$ 
+# Setup
+using `make setup` will install the rest of the dependencies and libraries in the
+project (echo, templ and tailwind)
 
-```
-### zsh
-```zsh
-$ 
+# build
+you can build everything using `make build`
 
-```
-### fish
-```fish
-$ 
-
-```
