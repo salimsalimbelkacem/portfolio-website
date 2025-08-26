@@ -1,3 +1,3 @@
-css: pnpm --prefix ./tailwind run watch-css
+css: DEBUG=tailwindcss:* pnpm --prefix ./tailwind run watch-css
 templ: templ generate --watch
 air: air
