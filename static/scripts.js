@@ -1,7 +1,7 @@
 body = document.body;
 follower = document.createElement("div")
 
-follower.className="hidden md:inline bg-white fixed w-15 h-15 blur-xl -z-10 rounded-full"
+follower.className="hidden md:inline bg-white fixed w-15 h-15 blur-2xl -z-10 rounded-full"
 
 body.appendChild(follower)
 

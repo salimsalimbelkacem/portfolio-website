@@ -17,5 +17,5 @@ func main(){
 
 	handlers.SetupRoutes(e)
 
-	e.Logger.Fatal(e.Start(":80"))
+	e.Logger.Fatal(e.Start(":5000"))
 }

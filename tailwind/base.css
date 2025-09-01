@@ -15,8 +15,8 @@
 @theme {
 	--font-display-sans: "gulax", sans-serif;
 	--font-sans: "Velvelyne", sans-serif;
-	--eye-cursor: url('/static/images/eye0.png') 27 13, default;
-	--eye-cursor-pointer: url('/static/images/eye1.png') 27 13, default;
+	--eye-cursor: url('/static/images/eye0.png') 21 10, default;
+	--eye-cursor-pointer: url('/static/images/eye1.png') 21 10, default;
 }
 
 @layer base {
