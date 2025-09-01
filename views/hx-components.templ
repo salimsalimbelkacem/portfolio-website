@@ -1,19 +1,25 @@
 package views
 
+var Routes = map[string]templ.Component{
+	"/home":Home(),
+	"/about":About(),
+	"/contacts":Contacts(),
+	"/projects":Projects(),
+	"/resume":Resume(),
+}
+
 templ Home(){
-	<h1>Home!</h1>
-		<p>
-			i don't know ui nor graphic design sorry :(
-		</p>
-		@Button("hello", "Default")
-		@Button("hello", "Alternative")
-		@Button("hello", "Yellow")
-		@Button("hello", "Green")
+	<p class="text-justify">
+	This is like a portfolio website
+	where i talk about my skills and stuff, 
+	<br>
+	nothing realy interesting in here tbh
+	</p>
 }
 
 templ About(){
 	<h1>About!</h1>
-		<p>
+		<p class="text-justify">
 			hehehe it works
 		</p>
 }
@@ -24,4 +30,13 @@ templ Contacts(){
 		<p>
 			woohoo
 		</p>
+}
+
+templ Projects(){
+	<h1>projects!</h1>
+}
+
+templ Resume(){
+	<a href="/static/files/french.pdf">In french</a>
+	<a href="/static/files/english.pdf">In english</a>
 }

@@ -14,3 +14,4 @@ setup:
 	pnpm --prefix $(TAILWIND) i
 	go get github.com/a-h/templ
 	go get github.com/labstack/echo/v4
+	go install github.com/a-h/templ/cmd/templ@latest

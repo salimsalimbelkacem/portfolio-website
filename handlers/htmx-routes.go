@@ -7,9 +7,9 @@ import (
 
 func setupHxRoutes(e *echo.Echo) (htmx *echo.Group){
 	htmx = e.Group("/hx")
-	htmx.GET("/home", rendTempl(views.Home(), nil))
-	htmx.GET("/about", rendTempl(views.About(), nil))
-	htmx.GET("/contacts", rendTempl(views.Contacts(), nil))
+	for path, Component := range views.Routes {
+		htmx.GET(path, rendTempl(Component, nil))
+	}
 
 	return 
 }

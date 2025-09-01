@@ -3,9 +3,7 @@ package views
 templ head(title string) {
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport"
-		content="width=device-width,
-		initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<title>{title}</title>
 		<link rel="stylesheet" href="/static/style.css">
@@ -15,12 +13,15 @@ templ head(title string) {
 
 
 templ navbar() {
-	<header class="bg-blue-900 p-2 flex justify-between">
-		<ul class="flex gap-4">
+	<header class=" p-4 flex justify-between items-stretch flex-col md:flex-row">
+		<h1 class="text-5xl md:text-8xl font-display-sans select-none text-center md:text-left">
+		Salim <img src="/static/images/wizard2.gif" class="w-20 select-none hidden md:inline"> <br class="hidden md:inline"/> Belkacem
+		</h1>
 
-			for _, display_text := range []string{ "home", "about", "contacts",} {
-				<li> 
-				<button type="button" 
+		<ul class="flex justify-between min-h-full py-4 flex-row md:flex-col">
+			for _, display_text := range []string{ "home", "about", "projects", "contacts", "resume"} {
+				<li class="text-right text-2xl"> 
+				<button type="button" class="underline " 
 				hx-get={"/hx/" + display_text}
 				hx-target="main">
 
@@ -29,34 +30,27 @@ templ navbar() {
 					</li>
 			}
 		</ul>
-
-		<ul class="flex gap-4">
-			<li> <a href="/"> Login </a> </li>
-			<li> <a href="/docs"> Register </a> </li>
-		</ul>
 	</header>
 }
 
 templ footer() {
-	<footer class="bg-blue-900 p-2">
-		footer
+	<footer class=" p-2">
 		</footer>
 }
 
 templ Layout(title string) {
 	<!DOCTYPE html>
-		<html lang="en" class="min-h-screen flex flex-col">
+		<html lang="en" class="min-h-screen flex flex-col cursor-(--eye-cursor)">
+			@head(title)
+			<body class="min-h-screen flex flex-col dark:bg-black dark:text-white ">
+			@navbar()
+			<main class="flex-1 p-4 transition-opacity delay-150 duration-300 ease-in-out">
+				{ children... }
+			</main>
+			@footer()
 
-		@head(title)
-
-		<body class="min-h-screen flex flex-col dark:bg-gray-800 dark:text-white">
-		@navbar()
-		<main class="flex-1 p-4 transition-opacity delay-150 duration-300 ease-in-out">
-			{ children... }
-		</main>
-
-		@footer()
-		</body>
+			<script src="/static/scripts.js"></script>
+			</body>
 
 		</html>
 }

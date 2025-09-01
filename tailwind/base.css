@@ -1,3 +1,37 @@
 @import "tailwindcss";
 
-@source "../views/**/*.templ"
+@font-face {
+    font-family: 'gulax';
+    src: url('/static/fonts/Gulax-Regular.woff2') format('woff2'),
+         url('/static/fonts/Gulax-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Velvelyne';
+    src: url('/static/fonts/Velvelyne-Regular.woff2') format('woff2'),
+         url('/static/fonts/Velvelyne-Regular.woff') format('woff');
+}
+
+@theme {
+	--font-display-sans: "gulax", sans-serif;
+	--font-sans: "Velvelyne", sans-serif;
+	--eye-cursor: url('/static/images/eye0.png') 27 13, default;
+	--eye-cursor-pointer: url('/static/images/eye1.png') 27 13, default;
+}
+
+@layer base {
+	::selection, ::-moz-selection {
+		@apply bg-white text-black p-2;
+	}
+
+	a, button{
+		@apply cursor-[var(--eye-cursor-pointer)];
+	}
+
+	a {
+		@apply block;
+	}
+}
+
+@source "../views/**/*.templ";
+@source "../static/scripts.js";
