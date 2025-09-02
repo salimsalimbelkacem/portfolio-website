@@ -16,34 +16,21 @@ func rendTempl(layout templ.Component, component templ.Component) func(c echo.Co
 	}
 }
 
+
+
 func SetupRoutes(e *echo.Echo){
 	// e.GET("/", rendTempl(views.Layout("Home"), views.Home()))
 
 	e.GET("/", func(c echo.Context) error {
 		title := c.QueryParam("title")
 
-		var component templ.Component
-
-		switch title {
-		case "about":
-			component = views.About();
-
-		case "contacts":
-			component = views.Contacts();
-
-		case "projects":
-			component = views.Projects();
-
-		case "resume":
-			component = views.Resume();
-		default:
-			component = views.Home();
-		}
+		var component templ.Component = views.Routes["/"+title]
+		if component == nil {component = views.Home()}
 
 		return rendTempl(
 			views.Layout(title),
 			component,
-		)(c)
+			)(c)
 	})
 	setupHxRoutes(e)
 }
