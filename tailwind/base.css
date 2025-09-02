@@ -15,8 +15,10 @@
 @theme {
 	--font-display-sans: "gulax", sans-serif;
 	--font-sans: "Velvelyne", sans-serif;
-	--eye-cursor: url('/static/images/eye0.png') 21 10, default;
-	--eye-cursor-pointer: url('/static/images/eye1.png') 21 10, default;
+	--cursor-default: url('/static/images/eye0.png') 21 10, default;
+	--cursor-pointer: url('/static/images/eye1.png') 21 10, default;
+	--cursor-grab: url('/static/images/hand0.png') 21 10, default;
+	--cursor-grabing: url('/static/images/hand1.png') 21 10, default;
 }
 
 @layer base {
@@ -24,13 +26,14 @@
 		@apply bg-white text-black p-2;
 	}
 
-	a, button{
-		@apply cursor-[var(--eye-cursor-pointer)];
+	body{
+		@apply cursor-default;
 	}
 
-	a {
-		@apply block;
+	a, button{
+		@apply cursor-pointer;
 	}
+
 }
 
 @source "../views/**/*.templ";
