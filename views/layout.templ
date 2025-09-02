@@ -8,7 +8,7 @@ templ head(title string) {
 
 		<title>{title}</title>
 		<link rel="stylesheet" href="/static/style.css">
-		<script src="/static/htmx.min.js"> </script>
+		<script src="/static/scripts/htmx.min.js"> </script>
 		</head>
 }
 
@@ -51,14 +51,12 @@ templ Layout(title string) {
 			@head(title)
 			<body class="min-h-screen flex flex-col dark:bg-black dark:text-white ">
 			@navbar()
-			<main class="flex-1 p-4 flex gap-4">
-				<div class="p-0 m-0">
+			<main class="flex-1 p-4 ">
 					{ children... }
-				</div>
 			</main>
 			@footer()
 
-			<script src="/static/scripts.js"></script>
+			<script src="/static/scripts/script.js"></script>
 			</body>
 
 		</html>

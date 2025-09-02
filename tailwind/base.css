@@ -18,7 +18,7 @@
 	--cursor-default: url('/static/images/eye0.png') 21 10, default;
 	--cursor-pointer: url('/static/images/eye1.png') 21 10, default;
 	--cursor-grab: url('/static/images/hand0.png') 21 10, default;
-	--cursor-grabing: url('/static/images/hand1.png') 21 10, default;
+	--cursor-grabbing: url('/static/images/hand1.png') 21 10, default;
 }
 
 @layer base {
@@ -37,4 +37,4 @@
 }
 
 @source "../views/**/*.templ";
-@source "../static/scripts.js";
+@source "../static/scripts/script.js";
