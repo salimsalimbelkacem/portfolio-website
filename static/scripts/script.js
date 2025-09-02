@@ -1,13 +1,13 @@
 lamp = document.createElement("img")
 lamp.src="/static/images/lamp.png"
 
-lamp_hover = "w-7 absolute cursor-grab"
-lamp_grab =  "w-7 absolute cursor-grabbing"
+lamp_hover = "top-[70%] left-[80%] w-7 absolute cursor-grab"
+lamp_grab =  "top-[70%] left-[80%] w-7 absolute cursor-grabbing"
 
 lamp.className=lamp_hover
 
 follower = document.createElement("div")
-follower.className="bg-yellow-100 absolute w-30 h-30 blur-2xl -z-10 rounded-full"
+follower.className="top-[70%] left-[80%] bg-yellow-100 absolute w-30 h-30 blur-2xl -z-10 rounded-full"
 
 follower.style.transform = "translate(-50%, -50%)";
 lamp.style.transform = "translate(-50%, -50%)";
