@@ -1,22 +1,23 @@
-GO-OUT=./bin/app
+.PHONY: setup css build clean templ
 
-TAILWIND_DIR=./tailwind
-CSS-OUT=static/style.css
+GO-OUT := ./bin/app
+TAILWIND_DIR := ./tailwind
+GO_FILES := cmd/* handlers/*
 
-templ: view/*_templ.go
-view/*_templ.go:
+templ: view/*.templ
+view/%.templ:
 	templ generate
 
-css: $(CSS-OUT)
-$(CSS-OUT):
+css:
 	pnpm --prefix $(TAILWIND_DIR) run gen-css
-
 
 build: css templ $(GO-OUT)
 $(GO-OUT):
 	go build -o $(GO-OUT) ./cmd
 
-setup: go.sum $(TAILWIND_DIR)/node_modules $(TAILWIND_DIR)/pnpm-lock.yaml
+
+setup: go.sum $(TAILWIND_DIR)/node_modules
+
 $(TAILWIND_DIR)/node_modules: $(TAILWIND_DIR)/pnpm-lock.yaml
 
 $(TAILWIND_DIR)/pnpm-lock.yaml:
