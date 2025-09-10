@@ -14,9 +14,11 @@ to have for development
 - a procfile-based process manager like [foreman](https://github.com/ddollar/foreman)
 or [overmind](https://github.com/DarthSim/overmind) 
 
-# Setup
-using `make setup` will install the rest of the dependencies and libraries in the
-project (echo, templ and tailwind)
+# Setup and build
+using `make` will install the rest of the dependencies and libraries in the
+project (echo, templ and tailwind) then build everything
+
+using `make setup` will just install the dependencies
 
 # build
 you can build everything using `make build`
