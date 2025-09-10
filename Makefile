@@ -4,6 +4,8 @@ GO-OUT := ./bin/app
 TAILWIND_DIR := ./tailwind
 GO_FILES := cmd/* handlers/*
 
+all: setup build
+
 templ: view/*.templ
 view/%.templ:
 	templ generate
