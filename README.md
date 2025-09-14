@@ -3,7 +3,7 @@ only me trying out golang and htmx
 
 # dependencies
 - `golang`
-- `npm` or `pnpm`
+- `npm` or `pnpm` or `yarn`
 - `make`
 
 > make sure to have the latest version of go
@@ -19,6 +19,9 @@ using `make` will install the rest of the dependencies and libraries in the
 project (echo, templ and tailwind) then build everything
 
 using `make setup` will just install the dependencies
+
+if you want to use `npm` or `yarn`:
+`make NPM=npm` or `make NPM=yarn`
 
 # build
 you can build everything using `make build`
