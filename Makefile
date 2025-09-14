@@ -3,8 +3,6 @@
 GO-OUT := ./bin/app
 GO_FILES := cmd/* handlers/*
 
-GO_BIN = 
-
 TAILWIND_DIR := ./tailwind
 NPM := pnpm
 ifeq ($(NPM), pnpm)
@@ -19,7 +17,7 @@ all: setup build
 
 # build
 views/%.go:
-	$(GO_BIN)/templ generate
+	templ generate
 static/style.css:
 	$(NPM) --prefix $(TAILWIND_DIR) run gen-css
 $(GO-OUT):
