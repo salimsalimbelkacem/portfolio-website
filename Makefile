@@ -16,13 +16,13 @@ endif
 all: setup build
 
 # build
-views/%.go:
+views/%.go: views/*.templ
 	templ generate
-static/style.css:
+static/style.css: $(TAILWIND_DIR) views/*.go
 	$(NPM) --prefix $(TAILWIND_DIR) run gen-css
-$(GO-OUT):
+$(GO-OUT): $(GO-IN)
 	go build -o $(GO-OUT) ./cmd
-build: static/style.css views/%.go $(GO-OUT)
+build: static/style.css views/*.go $(GO-OUT)
 
 # setup
 $(TAILWIND_DIR)/node_modules: $(TAILWIND_DIR)/$(LOCKFILE)
@@ -38,3 +38,6 @@ setup: go.sum $(TAILWIND_DIR)/node_modules
 # clean
 clean:
 	rm -rf static/style.css views/*_templ.go go.sum bin tmp $(TAILWIND_DIR)/$(LOCKFILE) $(TAILWIND_DIR)/node_modules
+
+server:
+	$(GO-OUT)
