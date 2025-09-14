@@ -23,7 +23,7 @@ views/%.go:
 static/style.css:
 	$(NPM) --prefix $(TAILWIND_DIR) run gen-css
 $(GO-OUT):
-	$(GO_BIN)/go build -o $(GO-OUT) ./cmd
+	go build -o $(GO-OUT) ./cmd
 build: static/style.css views/%.go $(GO-OUT)
 
 # setup
@@ -31,10 +31,10 @@ $(TAILWIND_DIR)/node_modules: $(TAILWIND_DIR)/$(LOCKFILE)
 $(TAILWIND_DIR)/$(LOCKFILE):
 	$(NPM) --prefix $(TAILWIND_DIR) i
 go.sum:
-	$(GO_BIN)/go get github.com/a-h/templ
-	$(GO_BIN)/go get github.com/labstack/echo/v4
-	$(GO_BIN)/go get github.com/labstack/echo/v4/middleware
-	$(GO_BIN)/go install github.com/a-h/templ/cmd/templ@latest
+	go get github.com/a-h/templ
+	go get github.com/labstack/echo/v4
+	go get github.com/labstack/echo/v4/middleware
+	go install github.com/a-h/templ/cmd/templ@latest
 setup: go.sum $(TAILWIND_DIR)/node_modules
 
 # clean
