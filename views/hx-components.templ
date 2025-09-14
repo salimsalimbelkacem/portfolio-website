@@ -1,37 +1,49 @@
 package views
 
+import "time"
+
 var Routes = map[string]templ.Component{
 	"/home":Home(),
-	"/about":About(),
-	"/contacts":Contacts(),
 	"/projects":Projects(),
 	"/resume":Resume(),
 }
 
-templ Home(){
-	<p class="text-justify">
-	This is like a portfolio/personal website
-	where i talk about my skills and stuff, 
-	<br>
-	nothing realy interesting in here tbh
-	except if you're hiring ;)
-	</p>
+
+var birth_date time.Time = time.Date(2004, 12, 31, 0, 0, 0, 0, time.UTC)
+
+func calc_age(birth_date time.Time) (age time.Time){
+	Now := time.Now()
+	age = time.Date(Now.Year() - birth_date.Year(), Now.Month()-birth_date.Month(), Now.Day()-birth_date.Day(), 0, 0, 0, 0, time.UTC)
+	return
 }
 
-templ About(){
-	<h1>About!</h1>
-		<p class="text-justify">
-			hehehe it works
+templ Home(){ // it's a flex container !
+	@about()
+	@tools()
+}
+
+templ about(){
+	<div class="overflow-auto">
+		<h1 class="font-display-sans text-lg">About me</h1>
+		<p class="text-justify w-70 px-5">
+		My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
+		I'm studying computer science with a passion for software development 
+		and cybersecurity. I love exploring new technologies and programming 
+		languages, constantly expanding my skills in this ever-evolving field.
 		</p>
+	</div>
 }
 
 
-templ Contacts(){
-	<h1>contacs!</h1>
-		<p>
-			woohoo
-		</p>
+templ tools(){
+	<div class="overflow-auto">
+	<h1 class="font-display-sans text-lg">Tools I use</h1>
+	<li id="list-of-tools">
+<li>piss</li>
+	</li>
+	</div>
 }
+
 
 templ Projects(){
 	<h1>projects!</h1>
