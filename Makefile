@@ -3,7 +3,7 @@
 GO-OUT := ./bin/app
 GO_FILES := cmd/* handlers/*
 
-GO_BIN := ~/go/bin
+GO_BIN = 
 
 TAILWIND_DIR := ./tailwind
 NPM := pnpm
