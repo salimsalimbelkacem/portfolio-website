@@ -23,25 +23,87 @@ templ Home(){ // it's a flex container !
 }
 
 templ about(){
-	<div class="overflow-auto">
-		<h1 class="font-display-sans text-lg">About me</h1>
-		<p class="text-justify w-70 px-5">
+	<div class="overflow-auto md:w-1/2 [&>p]:p-2">
+		<h1 class="font-display-sans">About me</h1>
+		<p class="text-justify">
 		My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
-		I'm studying computer science with a passion for software development 
+		I study computer science with a passion for software development 
 		and cybersecurity. I love exploring new technologies and programming 
-		languages, constantly expanding my skills in this ever-evolving field.
+		languages.
+		</p>
+		<p class="text-justify">
+		I graduated with a bachelor degree in network infrastructure and cybersecurity,
+		at Numidia Institute of Technology, Algiers, in july 2025.
 		</p>
 	</div>
 }
 
 
 templ tools(){
-	<div class="overflow-auto">
-	<h1 class="font-display-sans text-lg">Tools I use</h1>
-	<li id="list-of-tools">
-<li>piss</li>
-	</li>
-	</div>
+		<div class=" md:w-1/2 min-h-0 overflow-y-scroll [&>div]:flex-wrap [&>div]:mb-5">
+		<h1 class="font-display-sans">Tools I use</h1>
+
+			<h2>programming Languages</h2>
+			<div class="flex gap-5">
+				<i title="go" class="devicon-go-original-wordmark"></i>
+				<i title="c" class="devicon-c-original"></i>
+				<i title="cplusplus" class="devicon-cplusplus-plain"></i>
+				<i title="bash" class="devicon-bash-plain"></i>
+				<i title="python" class="devicon-python-plain"></i>
+				<i title="php" class="devicon-php-plain"></i>
+				<i title="java" class="devicon-java-plain"></i>
+				<i title="lua" class="devicon-lua-plain"></i>
+				<i title="mysql" class="devicon-mysql-original"></i>
+				<i title="javascript" class="devicon-javascript-plain"></i>
+				// <i title="mariadb" class="devicon-mariadb-original"></i>
+			</div>
+
+			<h2>not programming Languages</h2>
+			<div class="flex gap-5">
+				<i title="css3" class="devicon-css3-plain"></i>
+				<i title="html5" class="devicon-html5-plain"></i>
+				<i title="markdown" class="devicon-markdown-original"></i>
+			</div>
+
+			<h2>libraries and frameworks</h2>
+			<div class="flex gap-5">
+				<i title="tailwindcss" class="devicon-tailwindcss-original"></i>
+				<i title="htmx" class="devicon-htmx-plain"></i>
+				<i title="nextjs" class="devicon-nextjs-plain"></i>
+				<i title="react" class="devicon-react-original"></i>
+				<i title="svelte" class="devicon-svelte-plain"></i>
+				<i title="flask" class="devicon-flask-original"></i>
+				<i title="numpy" class="devicon-numpy-plain"></i>
+				<i title="sdl" class="devicon-sdl-plain"></i>
+				<i title="hugo" class="devicon-hugo-plain"></i>
+				<i title="sass" class="devicon-sass-original"></i>
+				<i title="mongodb" class="devicon-mongodb-plain"></i>
+			</div>
+
+			<h2>devops</h2>
+			<div class="flex gap-5">
+				<i title="docker" class="devicon-docker-plain"></i>
+				<i title="git" class="devicon-git-plain"></i>
+			</div>
+
+			<h2>others</h2>
+			<div class="flex gap-5">
+				<i title="tmux" class="devicon-tmux-plain"></i>
+				<i title="blender" class="devicon-blender-original"></i>
+				<i title="figma" class="devicon-figma-plain"></i>
+				<i title="gimp" class="devicon-gimp-plain"></i>
+				<i title="inkscape" class="devicon-inkscape-plain"></i>
+				<i title="pfsense" class="devicon-pfsense-original"></i>
+			</div>
+
+			<h2>editors and systems</h2>
+			<div class="flex gap-5">
+				<i title="archlinux" class="devicon-archlinux-plain"></i>
+				<i title="debian" class="devicon-debian-plain"></i>
+				<i title="neovim" class="devicon-neovim-plain"></i>
+				<i title="vim" class="devicon-vim-plain"></i>
+			</div>
+		</div>
 }
 
 

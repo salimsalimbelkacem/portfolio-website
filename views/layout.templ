@@ -6,16 +6,18 @@ templ head(title string) {
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
 
-		<title>{title}</title>
+		<title>Salim Belkacem's portfolio</title>
 		<link rel="stylesheet" href="/static/style.css">
 		<script src="/static/scripts/htmx.min.js"> </script>
+
+		<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" /> 
 		</head>
 }
 
 
 templ navbar() {
 	<header class=" p-4 flex justify-between items-stretch flex-col md:flex-row">
-		<h1 class="text-5xl md:text-8xl font-display-sans select-none text-center md:text-left">
+		<h1 class="text-5xl md:text-5xl font-display-sans select-none text-center md:text-left">
 		SALIM
 		<img src="/static/images/wizard2.gif" class="w-20 hidden md:inline cursor-pointer" id="the-wizard">
 		<br class="hidden md:inline"/> BELKACEM
@@ -45,10 +47,10 @@ templ Layout(title string) {
 	<!DOCTYPE html>
 		<html lang="en" class="min-h-screen flex flex-col">
 			@head(title)
-			<body class="min-h-screen flex flex-col dark:bg-black dark:text-white ">
+			<body class="md:h-screen flex flex-col dark:bg-black dark:text-white ">
 			@navbar()
 
-			<main class="flex-1 p-4 flex flex-col md:flex-row border border-white m-10 gap-5">
+			<main class="flex-1 min-h-0 p-4 flex flex-col md:flex-row border border-white mx-10 gap-2">
 					{ children... }
 			</main>
 
@@ -60,15 +62,31 @@ templ Layout(title string) {
 }
 
 templ contacts(){
-	<ul class="flex justify-between px-5">
-		<li> <span class="icon-[lineicons--github]"></span> github</li>
-		<li>linkedIn</li>
-		<li>email</li>
-		<li>discord</li>
+	<ul class="flex gap-5 [&_i]:text-2xl">
+		<li>
+			<a href="https://github.com/salimsalimbelkacem">
+				<i class="devicon-github-original"></i>
+			</a>
+		</li>
+		<li>
+			<a href="www.linkedin.com/in/salim-belkacem-7a76b7341">
+				<i class="devicon-linkedin-plain"></i>
+			</a>
+		</li>
+		<li>
+			<a href="mailto:salimbelkacemm.protonmail.com">
+			<span class="w-5 h-5 icon-[lineicons--proton-mail-symbol]"></span>
+			</a>
+		</li>
+//	<li>
+//		<a >
+//		<span class="w-5 h-5 icon-[lineicons--discord]"></span>
+//		</a>
+//	</li>
 	</ul>
 }
 templ footer() {
-	<footer class=" p-2">
+	<footer class=" flex justify-center p-2">
 	@contacts()
 		</footer>
 }

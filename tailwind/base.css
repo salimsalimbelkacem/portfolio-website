@@ -12,9 +12,20 @@
          url('/static/fonts/Velvelyne-Regular.woff') format('woff');
 }
 
+/* @font-face { */
+/*     font-family: 'agiro'; */
+/*          src: url('/static/fonts/Agiro.woff') format('woff'); */
+/* } */
+/**/
+/* @font-face { */
+/*     font-family: 'world-tour'; */
+/*          src: url('/static/fonts/DTWorldTour-Regular.ttf') format('woff'); */
+/* } */
+
 @theme {
 	--font-display-sans: "gulax", sans-serif;
 	--font-sans: "Velvelyne", sans-serif;
+
 	--cursor-default: url('/static/images/eye0.png') 21 10, default;
 	--cursor-pointer: url('/static/images/eye1.png') 21 10, default;
 	--cursor-grab: url('/static/images/hand0.png') 21 10, default;
@@ -32,6 +43,16 @@
 
 	a, button{
 		@apply cursor-pointer;
+	}
+	h1{
+		@apply font-display-sans text-2xl;
+	}
+
+	h2{
+		@apply font-display-sans text-lg;
+	}
+	i{
+		@apply text-3xl;
 	}
 
 }
