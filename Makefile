@@ -9,7 +9,7 @@ NPM := pnpm
 #TODO: this does not work ahaahhah
 
 # ifeq ($(NPM), pnpm)
-# LOCKFILE = pnpm-lock.yaml
+LOCKFILE = pnpm-lock.yaml
 # else ifeq ($(NPM), npm)
 # LOCKFILE = package-lock.json
 # else ifeq ($(NPM), bun)
