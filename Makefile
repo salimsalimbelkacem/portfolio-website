@@ -22,12 +22,12 @@ all: setup build
 
 # build
 views/%.go: views/*.templ
-	@templ generate
+	templ generate
 static/style.css: $(TAILWIND_DIR) views/*.go
 	#TODO: hardcode every command for every packet manager :P
-	@$(NPM) --prefix $(TAILWIND_DIR) run gen-css
+	$(NPM) --prefix $(TAILWIND_DIR) run gen-css
 $(GO-OUT): $(GO-IN)
-	@go build -o $(GO-OUT) ./cmd
+	go build -o $(GO-OUT) ./cmd
 build: static/style.css views/*.go $(GO-OUT)
 
 # setup
