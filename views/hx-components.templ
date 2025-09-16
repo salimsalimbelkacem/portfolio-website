@@ -22,101 +22,70 @@ templ Home(){ // it's a flex container !
 	@tools()
 }
 
+templ container(title, sec_div_add_styles string){
+	<div class=" md:w-1/2 flex flex-col px-2 ">
+		<h1 class="font-display-sans flex-shrink-0 mb-2">{title}</h1>
+			<div class={ "min-h-0 overflow-y-scroll "+ sec_div_add_styles }>
+			{ children... }
+			  </div>
+		  </div>
+}
+//[&>p]:px-4 [&>p]:py-2
 templ about(){
-	<div class="overflow-auto md:w-1/2 [&>p]:px-4 [&>p]:py-2 ">
-		<h1 class="font-display-sans">About me</h1>
-		<p class="text-justify">
-		My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
-		I study computer science with a passion for software development 
-		and cybersecurity. I love exploring new technologies and programming 
-		languages.
-		</p>
-		<p class="text-justify">
-		I graduated with a bachelor degree in network infrastructure and cybersecurity,
-		at Numidia Institute of Technology, Algiers, in july 2025.
-		</p>
+	@container("About me", "[&_br]:mb-4"){
+				<p class="text-justify px-4">
+				My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
+				I study computer science with a passion for software development 
+				and cybersecurity. I love exploring new technologies and programming 
+				languages.
+				<br>
+				I graduated with a bachelor degree in network infrastructure and cybersecurity,
+				at Numidia Institute of Technology, Algiers, in july 2025.
 
-		<p class="text-justify">
-		During my time at NIT I was a member then co-manager in the NCS scientific club,
-		within it I had the role of co-organizing a capture the flag event that went for 
-		48 hours.
-		</p>
-
-		<p class="text-justify">
-		Please hire me.
-		</p>
-	</div>
+				<br>
+				During my time at NIT I was a member then co-manager in the NCS scientific club,
+				within it I had the role of co-organizing a capture the flag event that went for 
+				48 hours.
+				<br>
+				Please hire me.
+				</p>
+	}
 }
 
-
 templ tools(){
-		<div class=" md:w-1/2 px-2 min-h-0 overflow-y-scroll [&>div]:flex-wrap [&>div]:mb-10 [&>div]:px-4">
-		<h1 class="font-display-sans">Tools I use</h1>
-
-			<h2>programming Languages</h2>
-			<div class="flex gap-5">
-				<i title="python" class="devicon-python-plain"></i>
-				<i title="go" class="devicon-go-original-wordmark"></i>
-				<i title="c" class="devicon-c-original"></i>
-				<i title="cplusplus" class="devicon-cplusplus-plain"></i>
-				<i title="javascript" class="devicon-javascript-plain"></i>
-				<i title="bash" class="devicon-bash-plain"></i>
-				<i title="php" class="devicon-php-plain"></i>
-				<i title="java" class="devicon-java-plain"></i>
-				<i title="lua" class="devicon-lua-plain"></i>
-				<i title="mysql" class="devicon-mysql-original"></i>
-				// <i title="mariadb" class="devicon-mariadb-original"></i>
-			</div>
-
-			<h2>not programming Languages</h2>
-			<div class="flex gap-5">
-				<i title="css3" class="devicon-css3-plain"></i>
-				<i title="html5" class="devicon-html5-plain"></i>
-				<i title="markdown" class="devicon-markdown-original"></i>
-			</div>
-
-			<h2>libraries and frameworks</h2>
-			<div class="flex gap-5">
-				<i title="tailwindcss" class="devicon-tailwindcss-original"></i>
-				<i title="sass" class="devicon-sass-original"></i>
-				<i title="htmx" class="devicon-htmx-plain"></i>
-				<i title="nextjs" class="devicon-nextjs-plain"></i>
-				<i title="react" class="devicon-react-original"></i>
-				<i title="svelte" class="devicon-svelte-plain"></i>
-				<i title="flask" class="devicon-flask-original"></i>
-				<i title="numpy" class="devicon-numpy-plain"></i>
-				<i title="scikitlearn" class="devicon-scikitlearn-plain"></i>
-				<i title="mongodb" class="devicon-mongodb-plain"></i>
-				<i title="sdl" class="devicon-sdl-plain"></i>
-				<i title="hugo" class="devicon-hugo-plain"></i>
-				<p>i couldn't find icons for <a href="https://echo.labstack.com/">echo</a> and <a href="https://templ.guide/">templ</a> (what i'm using for this website)</p>
-			</div>
-
-			<h2>devops</h2>
-			<div class="flex gap-5">
-				<i title="docker" class="devicon-docker-plain"></i>
-				<i title="git" class="devicon-git-plain"></i>
-			</div>
-
-			<h2>others</h2>
-			<div class="flex gap-5">
-				<i title="tmux" class="devicon-tmux-plain"></i>
-				<i title="blender" class="devicon-blender-original"></i>
-				<i title="figma" class="devicon-figma-plain"></i>
-				<i title="gimp" class="devicon-gimp-plain"></i>
-				<i title="inkscape" class="devicon-inkscape-plain"></i>
-				<i title="pfsense" class="devicon-pfsense-original"></i>
-			</div>
-
-			<h2>editors and systems</h2>
-			<div class="flex gap-5">
-				<i title="archlinux" class="devicon-archlinux-plain"></i>
-				<i title="debian" class="devicon-debian-plain"></i>
-				<i title="neovim" class="devicon-neovim-plain"></i>
-				<i title="emacs" class="devicon-emacs-original"></i>
-          			<i title="vim" class="devicon-vim-plain"></i>
-			</div>
-		</div>
+		@container("Tools I use", "[&>div]:flex-wrap [&>div]:mb-10 [&>div]:px-4 [&>div]:flex [&>div]:gap-5"){
+			for _, tools := range []struct { Title string; Icons []string } { 
+				{
+					"programming Languages",
+					[]string{ "python", "go", "c", "cplusplus", "javascript", "bash", "php", "java", "lua", "mysql",},
+				},
+				{
+					"not programming Languages", []string{"css3", "html5", "markdown", },
+				},
+				{
+					"libraries and frameworks",
+					[]string{"tailwindcss", "sass", "htmx", "nextjs", "react", "svelte",
+					"flask", "numpy", "scikitlearn", "mongodb", "sdl", "hugo",},
+				},
+				{
+					"devops", []string{"docker", "git", },
+				},
+				{
+					"others", []string{"tmux", "blender", "figma", "gimp", "inkscape", "pfsense", },
+				},
+				{
+					"editors and systems", []string{"archlinux", "debian", "neovim", "emacs", "vim", },
+				},
+			}{
+				<h2>{tools.Title}</h2>
+				<div>
+					for _, icon := range tools.Icons{
+						<i title={icon} class={"devicon-"+ icon +"-plain"}></i>
+					}
+				</div>
+			}
+		<p>i couldn't find icons for <a href="https://echo.labstack.com/">echo</a> and <a href="https://templ.guide/">templ</a> (what i'm using for this website)</p>
+		}
 }
 
 
