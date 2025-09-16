@@ -44,6 +44,10 @@
 	a, button{
 		@apply cursor-pointer;
 	}
+
+	a{
+		@apply underline;
+	}
 	h1{
 		@apply font-display-sans text-2xl;
 	}
@@ -51,9 +55,7 @@
 	h2{
 		@apply font-display-sans text-lg;
 	}
-	i{
-		@apply text-3xl;
-	}
+	i{ @apply text-4xl; }
 
 }
 
