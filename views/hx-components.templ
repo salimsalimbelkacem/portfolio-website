@@ -23,7 +23,7 @@ templ Home(){ // it's a flex container !
 }
 
 templ about(){
-	<div class="overflow-auto md:w-1/2 [&>p]:p-2">
+	<div class="overflow-auto md:w-1/4 [&>p]:px-4 [&>p]:py-2 ">
 		<h1 class="font-display-sans">About me</h1>
 		<p class="text-justify">
 		My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
@@ -35,26 +35,36 @@ templ about(){
 		I graduated with a bachelor degree in network infrastructure and cybersecurity,
 		at Numidia Institute of Technology, Algiers, in july 2025.
 		</p>
+
+		<p class="text-justify">
+		During my time at NIT I was a member then co-manager in the NCS scientific club,
+		within it I had the role of co-organizing a capture the flag event that went for 
+		48 hours.
+		</p>
+
+		<p class="text-justify">
+		Please hire me.
+		</p>
 	</div>
 }
 
 
 templ tools(){
-		<div class=" md:w-1/2 min-h-0 overflow-y-scroll [&>div]:flex-wrap [&>div]:mb-5">
+		<div class=" md:w-1/2 px-2 min-h-0 overflow-y-scroll [&>div]:flex-wrap [&>div]:mb-10 [&>div]:px-4">
 		<h1 class="font-display-sans">Tools I use</h1>
 
 			<h2>programming Languages</h2>
 			<div class="flex gap-5">
+				<i title="python" class="devicon-python-plain"></i>
 				<i title="go" class="devicon-go-original-wordmark"></i>
 				<i title="c" class="devicon-c-original"></i>
 				<i title="cplusplus" class="devicon-cplusplus-plain"></i>
+				<i title="javascript" class="devicon-javascript-plain"></i>
 				<i title="bash" class="devicon-bash-plain"></i>
-				<i title="python" class="devicon-python-plain"></i>
 				<i title="php" class="devicon-php-plain"></i>
 				<i title="java" class="devicon-java-plain"></i>
 				<i title="lua" class="devicon-lua-plain"></i>
 				<i title="mysql" class="devicon-mysql-original"></i>
-				<i title="javascript" class="devicon-javascript-plain"></i>
 				// <i title="mariadb" class="devicon-mariadb-original"></i>
 			</div>
 
@@ -68,16 +78,18 @@ templ tools(){
 			<h2>libraries and frameworks</h2>
 			<div class="flex gap-5">
 				<i title="tailwindcss" class="devicon-tailwindcss-original"></i>
+				<i title="sass" class="devicon-sass-original"></i>
 				<i title="htmx" class="devicon-htmx-plain"></i>
 				<i title="nextjs" class="devicon-nextjs-plain"></i>
 				<i title="react" class="devicon-react-original"></i>
 				<i title="svelte" class="devicon-svelte-plain"></i>
 				<i title="flask" class="devicon-flask-original"></i>
 				<i title="numpy" class="devicon-numpy-plain"></i>
+				<i title="scikitlearn" class="devicon-scikitlearn-plain"></i>
+				<i title="mongodb" class="devicon-mongodb-plain"></i>
 				<i title="sdl" class="devicon-sdl-plain"></i>
 				<i title="hugo" class="devicon-hugo-plain"></i>
-				<i title="sass" class="devicon-sass-original"></i>
-				<i title="mongodb" class="devicon-mongodb-plain"></i>
+				<p>i couldn't find icons for <a href="https://echo.labstack.com/">echo</a> and <a href="https://templ.guide/">templ</a> (what i'm using for this website)</p>
 			</div>
 
 			<h2>devops</h2>
@@ -101,7 +113,8 @@ templ tools(){
 				<i title="archlinux" class="devicon-archlinux-plain"></i>
 				<i title="debian" class="devicon-debian-plain"></i>
 				<i title="neovim" class="devicon-neovim-plain"></i>
-				<i title="vim" class="devicon-vim-plain"></i>
+				<i title="emacs" class="devicon-emacs-original"></i>
+          			<i title="vim" class="devicon-vim-plain"></i>
 			</div>
 		</div>
 }

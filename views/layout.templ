@@ -16,7 +16,7 @@ templ head(title string) {
 
 
 templ navbar() {
-	<header class=" p-4 flex justify-between items-stretch flex-col md:flex-row">
+	<header class=" px-10 py-4 flex justify-between items-stretch flex-col md:flex-row">
 		<h1 class="text-5xl md:text-5xl font-display-sans select-none text-center md:text-left">
 		SALIM
 		<img src="/static/images/wizard2.gif" class="w-20 hidden md:inline cursor-pointer" id="the-wizard">
@@ -28,7 +28,7 @@ templ navbar() {
 			for _, display_text := range []string{ "home", "projects", "resume"} {
 
 				<li class="text-right text-lg md:text-xl"> 
-					<button type="button" class="underline" 
+					<button type="button"
 						hx-get={"/hx/" + display_text}
 						hx-target="main">
 
@@ -42,7 +42,6 @@ templ navbar() {
 	</header>
 }
 
-
 templ Layout(title string) {
 	<!DOCTYPE html>
 		<html lang="en" class="min-h-screen flex flex-col">
@@ -50,7 +49,7 @@ templ Layout(title string) {
 			<body class="md:h-screen flex flex-col dark:bg-black dark:text-white ">
 			@navbar()
 
-			<main class="flex-1 min-h-0 p-4 flex flex-col md:flex-row border border-white mx-10 gap-2">
+			<main class="flex-1 min-h-0 p-5 flex flex-col md:flex-row border-3 border-white mx-10">
 					{ children... }
 			</main>
 
@@ -75,7 +74,7 @@ templ contacts(){
 		</li>
 		<li>
 			<a href="mailto:salimbelkacemm.protonmail.com">
-			<span class="w-5 h-5 icon-[lineicons--proton-mail-symbol]"></span>
+			<i>email</i>
 			</a>
 		</li>
 //	<li>
@@ -86,7 +85,7 @@ templ contacts(){
 	</ul>
 }
 templ footer() {
-	<footer class=" flex justify-center p-2">
-	@contacts()
-		</footer>
+	<footer class=" flex justify-center p-4 [&_a]:no-underline">
+		@contacts()
+	</footer>
 }
