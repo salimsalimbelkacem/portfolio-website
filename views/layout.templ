@@ -18,27 +18,25 @@ templ head(title string) {
 templ navbar() {
 	<header class=" px-14 pt-4 flex justify-between items-stretch flex-col md:flex-row">
 		<h1 class="text-5xl md:text-5xl font-display-sans select-none text-center md:text-left">
-		SALIM
-		<img src="/static/images/wizard2.gif" class="w-20 hidden md:inline cursor-pointer" id="the-wizard">
-		<br class="hidden md:inline"/> BELKACEM
+		SALIM BELKACEM <img src="/static/images/wizard2.gif" class="w-20 hidden md:inline cursor-pointer" id="the-wizard">
 		</h1>
 
-		<ul class="flex justify-between min-h-full py-4 flex-row md:flex-col">
-
-			for _, display_text := range []string{ "home", "projects", "resume"} {
-
-				<li class="text-right text-lg md:text-xl"> 
-					<button type="button"
-						hx-get={"/hx/" + display_text}
-						hx-target="main">
-
-						{display_text}
-					</button>
-				</li>
-
-			}
-
-		</ul>
+//	<ul class="flex justify-between min-h-full py-4 flex-row md:flex-col">
+//
+//		for _, display_text := range []string{ "home", "projects", "resume"} {
+//
+//			<li class="text-right text-lg md:text-xl"> 
+//				<button type="button"
+//					hx-get={"/hx/" + display_text}
+//					hx-target="main">
+//
+//					{display_text}
+//				</button>
+//			</li>
+//
+//		}
+//
+//	</ul>
 	</header>
 }
 
@@ -49,7 +47,7 @@ templ Layout(title string) {
 			<body class="md:h-screen flex flex-col dark:bg-black dark:text-white ">
 			@navbar()
 
-			<main class="flex-1 min-h-0 p-5 flex flex-col md:flex-row border-3 border-white mx-10">
+			<main class="flex-1 min-h-0 p-5 flex flex-col md:flex-row "> //border-3 border-white mx-10">
 					{ children... }
 			</main>
 
