@@ -1,13 +1,20 @@
 package views
 
-import "time"
+import (
+	"time"
+	"strconv"
+)
 
 var Routes = map[string]templ.Component{
-	"/home":Home(),
-	"/projects":Projects(),
-	"/resume":Resume(),
+	"projects":Projects(),
+	"resume":Resume(),
+	"tools":Tools(),
+	"test":Test(),
+	"about":About(),
 }
-
+templ Test(){
+	<h1>test</h1>
+}
 
 var birth_date time.Time = time.Date(2004, 12, 31, 0, 0, 0, 0, time.UTC)
 
@@ -18,21 +25,42 @@ func calc_age(birth_date time.Time) (age time.Time){
 }
 
 templ Home(){ // it's a flex container !
-	@about()
-	@tools()
+	@About()
+	@Tools()
 }
 
-templ container(title, sec_div_add_styles string){
-	<div class=" md:w-1/2 flex flex-col px-2 ">
-		<h1 class="font-display-sans flex-shrink-0 mb-2">{title}</h1>
-			<div class={ "min-h-0 overflow-y-scroll "+ sec_div_add_styles }>
-			{ children... }
-			  </div>
-		  </div>
+var i int = 0;
+
+func increment(by int) string{
+	i = i + by
+	return strconv.Itoa(i)
 }
-//[&>p]:px-4 [&>p]:py-2
-templ about(){
-	@container("About me", "[&_br]:mb-4"){
+
+templ container(id, title, sec_div_add_styles string){
+	<div class=" md:w-1/2 flex flex-col px-2 " id={"container-" + id + increment(1)}>
+		<div class="flex justify-between relative">
+			<h1 class="font-display-sans flex-shrink-0 mb-2 select-none" id="titi">{title}</h1>
+
+			<button class="cursor-pointer focus:[&>svg]:rotate-180 focus:[&+div]:max-h-50">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+					stroke-width="2" stroke="currentColor" class="size-10 transition-transform ease-out duration-300">
+					<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+				</svg>
+			</button>
+
+			<div class="right-0 top-10 *:text-lg *:m-2 flex flex-col absolute bg-black w-40 max-h-0 overflow-y-scroll transition-all duration-300 ease-in text-center">
+				for _, title := range []string{"projects", "resume", "tools", "about"} {
+					<button hx-get={"/hx/"+title} hx-swap="outerHTML" hx-target={"#container-"+id+increment(0)}>{title}</button>
+				}
+			</div>
+		</div>
+
+		<div class={ "min-h-0 overflow-y-scroll "+ sec_div_add_styles }> { children... } </div>
+	</div>
+}
+
+templ About(){
+	@container( "about", "About me", "[&_br]:mb-4" ){
 				<p class="text-justify px-4">
 				My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
 				I study computer science with a passion for software development 
@@ -52,29 +80,32 @@ templ about(){
 	}
 }
 
-templ tools(){
-		@container("Tools I use", "[&>div]:flex-wrap [&>div]:mb-10 [&>div]:px-4 [&>div]:flex [&>div]:gap-5"){
+templ Tools(){
+		@container("tools", "Tools I use", "[&>div]:flex-wrap [&>div]:mb-10 [&>div]:px-4 [&>div]:flex [&>div]:gap-5"){
 			for _, tools := range []struct { Title string; Icons []string } { 
 				{
 					"programming Languages",
-					[]string{ "python", "go", "c", "cplusplus", "javascript", "bash", "php", "java", "lua", "mysql",},
+					[]string{ "python", "go", "c", "cplusplus", "javascript",
+					"bash", "php", "java", "lua", "mysql",},
 				},
 				{
 					"not programming Languages", []string{"css3", "html5", "markdown", },
 				},
 				{
-					"libraries and frameworks",
-					[]string{"tailwindcss", "sass", "htmx", "nextjs", "react", "svelte",
-					"flask", "numpy", "scikitlearn", "mongodb", "sdl", "hugo",},
+					"libraries and frameworks", []string{"tailwindcss", "sass", "htmx",
+					"nextjs", "react", "svelte", "flask", "numpy", "scikitlearn",
+					"mongodb", "sdl", "hugo",},
 				},
 				{
 					"devops", []string{"docker", "git", },
 				},
 				{
-					"others", []string{"tmux", "blender", "figma", "gimp", "inkscape", "pfsense", },
+					"others", []string{"tmux", "blender", "figma",
+					"gimp", "inkscape", "pfsense", },
 				},
 				{
-					"editors and systems", []string{"archlinux", "debian", "neovim", "emacs", "vim", },
+					"editors and systems", []string{"archlinux", "debian",
+					"neovim", "emacs", "vim", },
 				},
 			}{
 				<h2>{tools.Title}</h2>
@@ -90,10 +121,14 @@ templ tools(){
 
 
 templ Projects(){
-	<h1>projects!</h1>
+	@container("projects","projects", ""){
+
+	}
 }
 
 templ Resume(){
-	<a href="/static/files/french.pdf">In french</a>
-	<a href="/static/files/english.pdf">In english</a>
+	@container("resume","resume", ""){
+		<a href="/static/files/french.pdf">In french</a>
+		<a href="/static/files/english.pdf">In english</a>
+	}
 }

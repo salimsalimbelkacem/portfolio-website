@@ -8,7 +8,7 @@ function lamp(params) {
 	lamp.className=lamp_hover
 
 	follower = document.createElement("div")
-	follower.className="top-[20%] left-[80%] bg-yellow-100 fixed w-30 h-30 blur-2xl -z-10 rounded-full"
+	follower.className="top-[20%] left-[80%] bg-yellow-100 fixed w-30 h-30 blur-2xl -z-10 rounded-full animate-lamp-light"
 
 	follower.style.transform = "translate(-50%, -50%)";
 	lamp.style.transform = "translate(-50%, -50%)";

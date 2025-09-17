@@ -30,6 +30,13 @@
 	--cursor-pointer: url('/static/images/eye1.png') 21 10, default;
 	--cursor-grab: url('/static/images/hand0.png') 21 10, default;
 	--cursor-grabbing: url('/static/images/hand1.png') 21 10, default;
+	--animate-lamp-light:  pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+	@keyframes pulse {
+		50% {
+			opacity: 0.85;
+		}
+	}
 }
 
 @layer base {
