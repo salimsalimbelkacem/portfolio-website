@@ -87,7 +87,7 @@ type tools_ struct {
 }
 
 templ Tools(){
-		@container("Tools I use","", "[&>div]:flex-wrap [&>div]:mb-10 [&>div]:px-10 [&>div]:flex [&>div]:gap-5"){
+		@container("Tools I use","", "[&>div]:flex-wrap [&>div]:mb-10 px-4 [&>div]:px-4 [&>div]:flex [&>div]:gap-5"){
 			for _, tools := range []tools_{ 
 				{
 					"programming Languages",
@@ -122,13 +122,15 @@ templ Tools(){
 				</div>
 			}
 		<h2>I can't find icons of those</h2>
-		<ol>
-		<li><a href="https://echo.labstack.com/">echo</a> (what i'm using for this website)</li>
-		<li><a href="https://templ.guide/">templ</a> (this too)</li>
-		<li><a href="https://wazuh.com/">wazuh</a></li>
-		<li><a href="https://www.fortinet.com/products/siem/fortisiem">fortisiem</a></li>
-		<li><a href="https://ollama.com/">ollama</a></li>
-		</ol>
+		<div class="mb-0">
+			<ol>
+			<li><a href="https://echo.labstack.com/">echo</a> (what i'm using for this website)</li>
+			<li><a href="https://templ.guide/">templ</a> (this too)</li>
+			<li><a href="https://wazuh.com/">wazuh</a></li>
+			<li><a href="https://www.fortinet.com/products/siem/fortisiem">fortisiem</a></li>
+			<li><a href="https://ollama.com/">ollama</a></li>
+			</ol>
+		</div>
 		}
 }
 
@@ -136,13 +138,13 @@ templ project_card( r githubrepo.Repo ){
 // name, url, description, language
 <div class="mb-10">
 	<h1><a href={r.Htmlurl}> {r.Name} </a></h1>
-	<h3>{r.Descritption}</h3>
-	<h3>{r.Language}</h3>
+	<h2>{r.Descritption}</h2>
+	<h4>{r.Language}</h4>
 </div>
 }
 
 templ Projects(){
-	@container("projects", "", ""){
+	@container("projects", "", "px-4"){
 		for _,repo := range githubrepo.GetReposList("salimsalimbelkacem"){
 			@project_card(repo)
 		}
@@ -151,7 +153,7 @@ templ Projects(){
 
 templ Resume(){
 	@container("resume", "", ""){
-		<a href="/static/files/french.pdf">In french</a>
-		<a href="/static/files/english.pdf">In english</a>
+		<h2><a href="/static/files/french.pdf">In french</a></h2>
+		<h2><a href="/static/files/english.pdf">In english</a></h2>
 	}
 }
