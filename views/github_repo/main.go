@@ -16,36 +16,48 @@ type Repo struct {
 	Language string `json:"language"`
 }
 
-func GetReposList(username string) (repos []Repo) {
-	url := "https://api.github.com/users/" + username + "/repos?sort=updated&type=all"
+type CacheEntry struct {
+	ETag string
+	Data []Repo
+}
 
-	resp, err := http.Get(url)
+var RepoCache = map[string]*CacheEntry{}
+
+func GetReposList(username string) []Repo {
+	url := "https://api.github.com/users/" + username + "/repos"
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	if entry, ok := RepoCache[username]; ok && entry.ETag != "" {
+		req.Header.Set("If-None-Match", entry.ETag)
+	}
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println("Error:", err)
-		return
+		return nil
 	}
 	defer resp.Body.Close()
 
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		fmt.Println("Error reading body:", err)
-		return
+	if resp.StatusCode == http.StatusNotModified {
+		fmt.Println("Cache hit (ETag in memory)")
+		return RepoCache[username].Data
 	}
 
-	err = json.Unmarshal(body, &repos)
-	if err != nil {
+	body, _ := io.ReadAll(resp.Body)
+
+	var repos []Repo
+	if err := json.Unmarshal(body, &repos); err != nil {
 		fmt.Println("Error parsing JSON:", err)
-		return
+		return nil
 	}
-	return
-}
 
-// func main() {
-// 	for _,repo := range getReposList("salimsalimbelkacem"){
-// 		println(repo.Name)
-// 		println(repo.Descritption)
-// 		println(repo.Htmlurl)
-// 		println(repo.Language)
-// 		println("-----------------")
-// 	}
-// }
+	etag := resp.Header.Get("ETag")
+	RepoCache[username] = &CacheEntry{
+		ETag: etag,
+		Data: repos,
+	}
+
+	return repos
+}
