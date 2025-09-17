@@ -3,6 +3,7 @@ package views
 import (
 	"time"
 	"strconv"
+	"github.com/salimsalimbelkacem/idk-what-i-am-doing-at-this-point/views/github_repo"
 )
 
 var Routes = map[string]templ.Component{
@@ -36,8 +37,8 @@ func increment(by int) string{
 	return strconv.Itoa(i)
 }
 
-templ container(id, title, sec_div_add_styles string){
-	<div class=" md:w-1/2 flex flex-col px-2 " id={"container-" + id + increment(1)}>
+templ container( title, fst_add_styles, sec_div_add_styles string){
+	<div class={"md:w-1/2 flex flex-col border-3 border-white my-2 md:my-0 mx-2 p-5" + fst_add_styles }id={"container-" + increment(1)}>
 		<div class="flex justify-between relative">
 			<h1 class="font-display-sans flex-shrink-0 mb-2 select-none" id="titi">{title}</h1>
 
@@ -50,7 +51,7 @@ templ container(id, title, sec_div_add_styles string){
 
 			<div class="right-0 top-10 *:text-lg *:m-2 flex flex-col absolute bg-black w-40 max-h-0 overflow-y-scroll transition-all duration-300 ease-in text-center">
 				for _, title := range []string{"projects", "resume", "tools", "about"} {
-					<button hx-get={"/hx/"+title} hx-swap="outerHTML" hx-target={"#container-"+id+increment(0)}>{title}</button>
+					<button hx-get={"/hx/"+title} hx-swap="outerHTML" hx-target={"#container-"+increment(0)}>{title}</button>
 				}
 			</div>
 		</div>
@@ -60,7 +61,7 @@ templ container(id, title, sec_div_add_styles string){
 }
 
 templ About(){
-	@container( "about", "About me", "[&_br]:mb-4" ){
+	@container( "About me", "", "[&_br]:mb-4" ){
 				<p class="text-justify px-4">
 				My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
 				I study computer science with a passion for software development 
@@ -80,9 +81,14 @@ templ About(){
 	}
 }
 
+type tools_ struct {
+	Title string
+	Icons []string
+}
+
 templ Tools(){
-		@container("tools", "Tools I use", "[&>div]:flex-wrap [&>div]:mb-10 [&>div]:px-4 [&>div]:flex [&>div]:gap-5"){
-			for _, tools := range []struct { Title string; Icons []string } { 
+		@container("Tools I use","", "[&>div]:flex-wrap [&>div]:mb-10 [&>div]:px-10 [&>div]:flex [&>div]:gap-5"){
+			for _, tools := range []tools_{ 
 				{
 					"programming Languages",
 					[]string{ "python", "go", "c", "cplusplus", "javascript",
@@ -115,19 +121,36 @@ templ Tools(){
 					}
 				</div>
 			}
-		<p>i couldn't find icons for <a href="https://echo.labstack.com/">echo</a> and <a href="https://templ.guide/">templ</a> (what i'm using for this website)</p>
+		<h2>I can't find icons of those</h2>
+		<ol>
+		<li><a href="https://echo.labstack.com/">echo</a> (what i'm using for this website)</li>
+		<li><a href="https://templ.guide/">templ</a> (this too)</li>
+		<li><a href="https://wazuh.com/">wazuh</a></li>
+		<li><a href="https://www.fortinet.com/products/siem/fortisiem">fortisiem</a></li>
+		<li><a href="https://ollama.com/">ollama</a></li>
+		</ol>
 		}
 }
 
+templ project_card( r githubrepo.Repo ){
+// name, url, description, language
+<div class="mb-10">
+	<h1><a href={r.Htmlurl}> {r.Name} </a></h1>
+	<h3>{r.Descritption}</h3>
+	<h3>{r.Language}</h3>
+</div>
+}
 
 templ Projects(){
-	@container("projects","projects", ""){
-
+	@container("projects", "", ""){
+		for _,repo := range githubrepo.GetReposList("salimsalimbelkacem"){
+			@project_card(repo)
+		}
 	}
 }
 
 templ Resume(){
-	@container("resume","resume", ""){
+	@container("resume", "", ""){
 		<a href="/static/files/french.pdf">In french</a>
 		<a href="/static/files/english.pdf">In english</a>
 	}
