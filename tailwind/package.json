@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch-css": "pnpx @tailwindcss/cli -i ./base.css -o ../static/style.css --watch=always --minify",
-    "gen-css": "pnpx @tailwindcss/cli -i ./base.css -o ../static/style.css --minify"
+    "watch-css": "tailwindcss -i ./base.css -o ../static/style.css --watch=always --minify",
+    "gen-css": "tailwindcss -i ./base.css -o ../static/style.css --minify"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "packageManager": "pnpm@10.14.0",
   "dependencies": {
     "@tailwindcss/cli": "^4.1.12",
     "tailwindcss": "^4.1.12"

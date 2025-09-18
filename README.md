@@ -4,7 +4,7 @@ code for yourself, and it is nothing to be ashamed of.
 
 # dependencies
 - `golang`
-- ~`npm` or~ `pnpm` ~or `yarn`~
+- `pnpm`, `npm`, `yarn` or `bun`
 - `make`
 
 > make sure to have the latest version of go
@@ -21,8 +21,11 @@ project (echo, templ and tailwind) then build everything
 
 using `make setup` will just install the dependencies
 
-~if you want to use `npm` or `yarn`:
-`make NPM=npm` or `make NPM=yarn`~
+by default tailwind will be installed using pnpm so
+if you want to use `npm`, `yarn` or `bun` for setup and build:
+`make NPM=<your-package-manager>`
+
+only the ones specified are suported
 
 # build
 you can build everything using `make build`
