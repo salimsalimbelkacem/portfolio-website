@@ -23,7 +23,7 @@ Using `make setup` will only install the dependencies
 
 Using `make build` will only build the project
 
-You can use `make` to only build the project if the setup is already done
+> You can use `make` to only build the project if the setup is already done
 
 # Node Package Manager
 By default tailwind will be installed using pnpm so
