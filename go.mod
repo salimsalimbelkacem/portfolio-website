@@ -1,4 +1,4 @@
-module github.com/salimsalimbelkacem/idk-what-i-am-doing-at-this-point
+module github.com/salimsalimbelkacem/portfolio-website
 
 go 1.24.6
 

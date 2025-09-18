@@ -24,7 +24,7 @@ type CacheEntry struct {
 var RepoCache = map[string]*CacheEntry{}
 
 func GetReposList(username string) []Repo {
-	url := "https://api.github.com/users/" + username + "/repos"
+	url := "https://api.github.com/users/" + username + "/repos?type=all&sort=updated"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -41,7 +41,6 @@ func GetReposList(username string) []Repo {
 	defer resp.Body.Close()
 
 	if resp.StatusCode == http.StatusNotModified {
-		fmt.Println("Cache hit (ETag in memory)")
 		return RepoCache[username].Data
 	}
 

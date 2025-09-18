@@ -3,7 +3,7 @@ package views
 import (
 	"time"
 	"strconv"
-	"github.com/salimsalimbelkacem/idk-what-i-am-doing-at-this-point/views/github_repo"
+	"github.com/salimsalimbelkacem/portfolio-website/views/github_repo"
 )
 
 var Routes = map[string]templ.Component{
@@ -40,7 +40,7 @@ func increment(by int) string{
 templ container( title, fst_add_styles, sec_div_add_styles string){
 	<div class={"md:w-1/2 flex flex-col border-3 border-white my-2 md:my-0 mx-2 p-5" + fst_add_styles }id={"container-" + increment(1)}>
 		<div class="flex justify-between relative">
-			<h1 class="font-display-sans flex-shrink-0 mb-2 select-none" id="titi">{title}</h1>
+			<h1 class="font-display-sans flex-shrink-0 mb-2 select-none">{title}</h1>
 
 			<button class="cursor-pointer focus:[&>svg]:rotate-180 focus:[&+div]:max-h-50">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -49,8 +49,8 @@ templ container( title, fst_add_styles, sec_div_add_styles string){
 				</svg>
 			</button>
 
-			<div class="right-0 top-10 *:text-lg *:m-2 flex flex-col absolute bg-black w-40 max-h-0 overflow-y-scroll transition-all duration-300 ease-in text-center">
-				for _, title := range []string{"projects", "resume", "tools", "about"} {
+			<div class="right-0 top-10 *:text-lg *:m-2 flex flex-col absolute bg-black w-40 max-h-0 overflow-hidden transition-all duration-300 ease-in text-center">
+				for _, title := range []string{"about", "projects", "resume", "tools", } {
 					<button hx-get={"/hx/"+title} hx-swap="outerHTML" hx-target={"#container-"+increment(0)}>{title}</button>
 				}
 			</div>
@@ -62,22 +62,35 @@ templ container( title, fst_add_styles, sec_div_add_styles string){
 
 templ About(){
 	@container( "About me", "", "[&_br]:mb-4" ){
-				<p class="text-justify px-4">
-				My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
-				I study computer science with a passion for software development 
-				and cybersecurity. I love exploring new technologies and programming 
-				languages.
-				<br>
-				I graduated with a bachelor degree in network infrastructure and cybersecurity,
-				at Numidia Institute of Technology, Algiers, in july 2025.
+		<p class="px-4">
+			My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
+			I study computer science with a passion for software development 
+			and cybersecurity. I love exploring new technologies and programming 
+			languages. <br>
 
-				<br>
-				During my time at NIT I was a member then co-manager in the NCS scientific club,
-				within it I had the role of co-organizing a capture the flag event that went for 
-				48 hours.
-				<br>
-				Please hire me.
-				</p>
+			I graduated with a bachelor degree in network infrastructure and cybersecurity,
+			at Numidia Institute of Technology, Algiers, in july 2025. <br>
+
+			During my time at NIT I was a member then co-manager in
+			<a href="https://www.instagram.com/ncs._club/">the NCS scientific club.</a> 
+			<br>
+
+			Within it I most notably had the role of co-organizing a capture the flag event
+			that went for 48 hours. With the help of the <a href="https://www.shellmates.club/">
+			shellmates club</a> we crafted a serie of chalenges, and deployed them using docker
+			on the cloud using google's services.
+			<br>
+
+			For a period of 7 weeks I was an intern among the soc team at
+			<a href="https://unidees.dz">unidees</a> , and during that time I alongside my
+			internship partner had the chance to learn about SIEMs, security and developed
+			a deepseek wrapper for CIS remidiations that were detected inside a FOSS SIEM
+			called wazuh, and presented the project as our end of study project {"for"} our
+			bachelor.
+			<br>
+
+			//Please hire me.
+		</p>
 	}
 }
 
@@ -106,12 +119,10 @@ templ Tools(){
 					"devops", []string{"docker", "git", },
 				},
 				{
-					"others", []string{"tmux", "blender", "figma",
-					"gimp", "inkscape", "pfsense", },
+					"others", []string{"tmux", "figma", "gimp", "inkscape", "pfsense", },
 				},
 				{
-					"editors and systems", []string{"archlinux", "debian",
-					"neovim", "emacs", "vim", },
+					"editors and systems", []string{"archlinux", "debian", "neovim", "vim", },
 				},
 			}{
 				<h2>{tools.Title}</h2>
@@ -136,7 +147,7 @@ templ Tools(){
 
 templ project_card( r githubrepo.Repo ){
 // name, url, description, language
-<div class="mb-10">
+<div class="my-10">
 	<h1><a href={r.Htmlurl}> {r.Name} </a></h1>
 	<h2>{r.Descritption}</h2>
 	<h4>{r.Language}</h4>
@@ -145,6 +156,7 @@ templ project_card( r githubrepo.Repo ){
 
 templ Projects(){
 	@container("projects", "", "px-4"){
+		<p>I am just listing repositories I own or colaborated in, that are hosted on github, the only notable project is the cis one ig</p>
 		for _,repo := range githubrepo.GetReposList("salimsalimbelkacem"){
 			@project_card(repo)
 		}
@@ -152,8 +164,13 @@ templ Projects(){
 }
 
 templ Resume(){
-	@container("resume", "", ""){
-		<h2><a href="/static/files/french.pdf">In french</a></h2>
-		<h2><a href="/static/files/english.pdf">In english</a></h2>
+	@container("resume", "", "flex [&>a]:flex-1 [&_div]:h-40 [&_div]:bg-size-[100%_100%]"){
+		<a href="/static/files/french.pdf" >
+		<div class="bg-[url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F07%2FFrench-Flag-HD-Image.png&f=1&nofb=1&ipt=b5041b87c07b3ff6a618578d3eef393d89c2ec62fd43ff1428eb5b1a4b520ad4)] "></div>
+		</a>
+		<a href="/static/files/english.pdf">
+		<div class="bg-[url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fa.rgbimg.com%2Fusers%2Fk%2Fkn%2Fknox_x%2F600%2Fo5a4hGu.jpg&f=1&nofb=1&ipt=4955cc3dc2c754144fa6617bd17f138bd0f578391c71edf60ca7d39721513ad2)]"></div>
+
+		</a>
 	}
 }

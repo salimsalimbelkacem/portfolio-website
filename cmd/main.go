@@ -4,7 +4,7 @@ import (
 	// "github.com/salimsalimbelkacem/idk-what-i-am-doing-at-this-point/views"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/salimsalimbelkacem/idk-what-i-am-doing-at-this-point/handlers"
+	"github.com/salimsalimbelkacem/porfolio-website/handlers"
 )
 
 

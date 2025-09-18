@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/salimsalimbelkacem/idk-what-i-am-doing-at-this-point/views"
+	"github.com/salimsalimbelkacem/portfolio-website/views"
 )
 
 func setupHxRoutes(e *echo.Echo) (htmx *echo.Group){
