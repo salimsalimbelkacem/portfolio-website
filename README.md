@@ -1,5 +1,6 @@
-i don't want to justify what is this project and why, it is nothing for the moment,
-only me trying out golang and htmx
+# My portfolio website
+I know you couldn't believe your eyes when you saw my website and wanted to see the
+code for yourself, and it is nothing to be ashamed of.
 
 # dependencies
 - `golang`
