@@ -29,11 +29,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	e.GET("/api", rendTempl( views.Layout(), views.Home(),))
 
-	// htmx := e.Group("/hx")
-	//
-	// for path, Component := range views.Routes {
-	// 	htmx.GET("/api/"+path, rendTempl(Component, nil))
-	// }
+	htmx := e.Group("/hx")
+
+	for path, Component := range views.Routes {
+		htmx.GET("/api/"+path, rendTempl(Component, nil))
+	}
 
 	e.ServeHTTP(w, r)
 }
