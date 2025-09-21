@@ -28,7 +28,7 @@ all: setup build
 # build
 views/%.go: views/*.templ
 	templ generate
-static/style.css: $(TAILWIND_DIR) views/*.go
+static/style.css: $(TAILWIND_DIR)/base.css views/*.go
 	$(TLWD_CMD) run gen-css
 
 $(GO-OUT): $(GO-IN)

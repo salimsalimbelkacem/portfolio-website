@@ -12,16 +12,6 @@
          url('/static/fonts/Velvelyne-Regular.woff') format('woff');
 }
 
-/* @font-face { */
-/*     font-family: 'agiro'; */
-/*          src: url('/static/fonts/Agiro.woff') format('woff'); */
-/* } */
-/**/
-/* @font-face { */
-/*     font-family: 'world-tour'; */
-/*          src: url('/static/fonts/DTWorldTour-Regular.ttf') format('woff'); */
-/* } */
-
 @theme {
 	--font-display-sans: "gulax", sans-serif;
 	--font-sans: "Velvelyne", sans-serif;
@@ -43,29 +33,18 @@
 	::selection, ::-moz-selection {
 		@apply bg-white text-black p-2;
 	}
-
 	body{
 		@apply cursor-default;
 	}
-
 	a, button{
 		@apply cursor-pointer;
 	}
 
-	a{
-		@apply underline;
-	}
-	h1{
-		@apply font-display-sans text-3xl;
-	}
-
-	h2{
-		@apply font-display-sans text-xl;
-	}
-	i{ @apply text-4xl; }
-	p{
-		@apply text-justify;
-	}
+	h1{ @apply font-display-sans text-3xl; }
+	h2{ @apply font-display-sans text-xl; }
+	a { @apply underline; }
+	i { @apply text-4xl; }
+	p { @apply text-justify; }
 
 }
 
