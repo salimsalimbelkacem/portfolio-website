@@ -20,20 +20,24 @@ func rendTempl(layout templ.Component, component templ.Component) func(c echo.Co
 	}
 }
 
-func Handler(w http.ResponseWriter, r *http.Request) {
-	e := echo.New()
+var app *echo.Echo
 
-	e.Use((middleware.Logger()))
+func Setup(){
+	app = echo.New()
 
-	e.Static("/static", "static")
+	app.Use((middleware.Logger()))
 
-	e.GET("/api", rendTempl( views.Layout(), views.Home(),))
+	app.Static("/static", "static")
 
-	htmx := e.Group("/hx")
+	app.GET("/", rendTempl( views.Layout(), views.Home(),))
 
 	for path, Component := range views.Routes {
-		htmx.GET("/api/"+path, rendTempl(Component, nil))
+		app.GET("/api/hx/"+path, rendTempl(Component, nil))
 	}
 
-	e.ServeHTTP(w, r)
+
+}
+
+func Handler(w http.ResponseWriter, r *http.Request) {
+	app.ServeHTTP(w, r)
 }
