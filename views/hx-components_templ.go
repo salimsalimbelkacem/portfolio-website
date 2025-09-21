@@ -626,7 +626,7 @@ func Resume() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "<a href=\"/static/files/french.pdf\"><div class=\"bg-[url(/static/images/french flag.png)] \"></div></a> <a href=\"/static/files/english.pdf\"><div class=\"bg-[url(/static/images/english_flag.png)]\"></div></a>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "<a href=\"/static/files/french.pdf\"><div class=\"bg-[url(/static/images/french_flag.png)] \"></div></a> <a href=\"/static/files/english.pdf\"><div class=\"bg-[url(/static/images/english_flag.png)]\"></div></a>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
