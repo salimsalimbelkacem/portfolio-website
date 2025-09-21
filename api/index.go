@@ -27,7 +27,7 @@ func init(){
 
 	app.Use((middleware.Logger()))
 
-	app.Static("/static", "static")
+	app.Static("/public/static", "static")
 
 	app.GET("/", rendTempl( views.Layout(), views.Home(),))
 
