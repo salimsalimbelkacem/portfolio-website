@@ -6,8 +6,6 @@ GO_FILES := cmd/* handlers/*
 TAILWIND_DIR := ./tailwind
 NPM := pnpm
 
-#TODO: this does not work ahaahhah
-
 ifeq ($(NPM), pnpm)
 LOCKFILE = pnpm-lock.yaml
 TLWD_CMD = pnpm --prefix $(TAILWIND_DIR) 
@@ -30,7 +28,7 @@ all: setup build
 # build
 views/%.go: views/*.templ
 	templ generate
-static/style.css: $(tailwind_dir) views/*.go
+static/style.css: $(TAILWIND_DIR) views/*.go
 	$(TLWD_CMD) run gen-css
 
 $(GO-OUT): $(GO-IN)
