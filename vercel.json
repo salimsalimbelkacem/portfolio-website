@@ -1,5 +1,6 @@
 {
-    "routes": [
-      { "src": "/(.*)", "dest": "api/1" }
-    ]
-  }
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"routes": [
+		{ "src": "/(.*)", "dest": "api/index.go" }
+	]
+}

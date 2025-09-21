@@ -22,7 +22,7 @@ func rendTempl(layout templ.Component, component templ.Component) func(c echo.Co
 
 var app *echo.Echo
 
-func Setup(){
+func init(){
 	app = echo.New()
 
 	app.Use((middleware.Logger()))
@@ -32,10 +32,9 @@ func Setup(){
 	app.GET("/", rendTempl( views.Layout(), views.Home(),))
 
 	for path, Component := range views.Routes {
-		app.GET("/api/hx/"+path, rendTempl(Component, nil))
+		println(path)
+		app.GET("/hx/"+path, rendTempl(Component, nil))
 	}
-
-
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
