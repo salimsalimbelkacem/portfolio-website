@@ -25,20 +25,21 @@
 	--animate-lamp-light:  pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
 	@keyframes pulse {
-		50% {
-			opacity: 0.85;
-		}
+		50% { opacity: 0.85; }
 	}
 }
 
 @layer base {
-	::selection, ::-moz-selection {
-		@apply bg-black dark:bg-white text-white dark:text-black p-2;
+	::selection {
+		@apply bg-black text-white;
+	}
+	html.dark ::selection {
+		@apply bg-white text-black;
 	}
 	body{	@apply cursor-default; }
 	a,
-	button{ @apply cursor-pointer; }
-	h1{	@apply font-display-sans text-3xl; }
+	button{	@apply cursor-pointer;}
+	h1{	@apply font-display-sans text-2xl; }
 	h2{	@apply text-xl; }
 	a {	@apply underline; }
 	i {	@apply text-4xl; }

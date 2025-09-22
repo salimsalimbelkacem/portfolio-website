@@ -15,7 +15,7 @@ templ head() {
 }
 
 templ theme_toggle_button(){
-	<button class="h-12 w-12 md:self-center fixed md:static right-10 md:left-auto top-10 md:top-auto bg-white dark:bg-black rounded-full z-5 p-1"
+	<button class="h-10 w-10 self-center"
 	onClick="document.documentElement.classList.toggle('dark')">
 		<svg class="fill-black block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
 		    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -29,7 +29,7 @@ templ theme_toggle_button(){
 }
 
 templ navbar() {
-	<header class="px-6 pt-4 flex justify-between items-stretch flex-col md:flex-row">
+	<header class="px-6 pt-4 flex justify-between items-stretch order-1">
 		<h1 class="text-5xl md:text-5xl font-display-sans select-none">
 		<span>SALIM BELKACEM</span>
 		<img src="/static/images/wizard2.gif" class="w-20 hidden md:inline">
@@ -42,24 +42,24 @@ templ navbar() {
 
 templ Layout() {
 	<!DOCTYPE html>
-		<html lang="en" class="min-h-screen flex flex-col">
+		<html lang="en" class="max-h-screen flex flex-col">
 			@head()
 			<body class="h-screen flex flex-col dark:bg-black dark:text-white ">
-			@navbar()
+				@navbar()
 
-			<main class="flex-1 min-h-0 p-5 flex flex-row"> //border-3 border-white mx-10">
-					{ children... }
-			</main>
+				<main class="flex-1 min-h-0 p-5 flex order-3 md:order-2"> //border-3 border-white mx-10">
+						{ children... }
+				</main>
 
-			<script src="/static/scripts/script.js"></script>
-			@footer()
+				<script src="/static/scripts/script.js"></script>
+				@footer()
 			</body>
 
 		</html>
 }
 
 templ contacts(){
-	<ul class="flex gap-5 [&_i]:text-2xl">
+	<ul class="flex gap-5 [&_i]:text-2xl justify-evenly w-full md:justify-center ">
 		<li>
 			<a href="https://github.com/salimsalimbelkacem">
 				<i class="devicon-github-original"></i>
@@ -83,7 +83,7 @@ templ contacts(){
 	</ul>
 }
 templ footer() {
-	<footer class=" flex justify-center p-4 [&_a]:no-underline">
+	<footer class="px-10 py-4 [&_a]:no-underline order-2 md:order-last">
 		@contacts()
 	</footer>
 }

@@ -39,7 +39,7 @@ func increment(by int) string{
 
 templ container( title, fst_add_styles, sec_div_add_styles string){
 	<div class={"border-3 dark:border-white my-2 md:my-0 mx-2 p-2 md:p-5 flex flex-1 flex flex-col " + fst_add_styles }id={"container-" + increment(1)}>
-		<div class="flex justify-between relative">
+		<div class="flex justify-between relative py-2">
 			<h1 class="font-display-sans flex-shrink-0 mb-2 select-none">{title}</h1>
 
 			<button class="cursor-pointer focus:[&>svg]:rotate-180 focus:[&+div]:max-h-50">
@@ -56,7 +56,7 @@ templ container( title, fst_add_styles, sec_div_add_styles string){
 			</div>
 		</div>
 
-		<div class={ "min-h-0 overflow-y-scroll "+ sec_div_add_styles }> { children... } </div>
+		<div class={ "min-h-0 overflow-y-scroll overflow-x-scroll "+ sec_div_add_styles }> { children... } </div>
 	</div>
 }
 
@@ -155,7 +155,7 @@ templ project_card( r githubrepo.Repo ){
 }
 
 templ Projects(){
-	@container("projects", "", "px-4"){
+	@container("projects", "", ""){
 		<p>I am just listing repositories I own or colaborated in, that are hosted on github, the only notable project is the cis one ig</p>
 		for _,repo := range githubrepo.GetReposList("salimsalimbelkacem"){
 			@project_card(repo)
