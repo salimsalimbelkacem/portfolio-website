@@ -9,7 +9,7 @@ import (
 var Routes = map[string]templ.Component{
 	"projects":Projects(),
 	"resume":Resume(),
-	"tools":Tools(),
+	"tools":Tools(""),
 	"test":Test(),
 	"about":About(),
 }
@@ -27,7 +27,7 @@ func calc_age(birth_date time.Time) (age time.Time){
 
 templ Home(){ // it's a flex container !
 	@About()
-	@Tools()
+	@Tools("hidden md:flex")
 }
 
 var i int = 0;
@@ -38,7 +38,7 @@ func increment(by int) string{
 }
 
 templ container( title, fst_add_styles, sec_div_add_styles string){
-	<div class={"md:w-1/2 flex flex-col border-3 dark:border-white my-2 md:my-0 mx-2 p-5" + fst_add_styles }id={"container-" + increment(1)}>
+	<div class={"border-3 dark:border-white my-2 md:my-0 mx-2 p-2 md:p-5 flex flex-1 flex flex-col " + fst_add_styles }id={"container-" + increment(1)}>
 		<div class="flex justify-between relative">
 			<h1 class="font-display-sans flex-shrink-0 mb-2 select-none">{title}</h1>
 
@@ -62,7 +62,7 @@ templ container( title, fst_add_styles, sec_div_add_styles string){
 
 templ About(){
 	@container( "About me", "", "[&_br]:mb-4" ){
-		<p class="px-4">
+		<p>
 			My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
 			I study computer science with a passion for software development 
 			and cybersecurity. I love exploring new technologies and programming 
@@ -99,8 +99,8 @@ type tools_ struct {
 	Icons []string
 }
 
-templ Tools(){
-		@container("Tools I use","", "[&>div]:flex-wrap [&>div]:mb-10 px-4 [&>div]:px-4 [&>div]:flex [&>div]:gap-5"){
+templ Tools(add_style string){
+		@container("Tools I use", add_style, "[&>div]:flex-wrap [&>div]:mb-10 [&>div]:flex [&>div]:gap-5"){
 			for _, tools := range []tools_{ 
 				{
 					"programming Languages",
@@ -133,7 +133,7 @@ templ Tools(){
 				</div>
 			}
 		<h2>I can't find icons of those</h2>
-		<div class="mb-0">
+		<div>
 			<ol>
 			<li><a href="https://echo.labstack.com/">echo</a> (what i'm using for this website)</li>
 			<li><a href="https://templ.guide/">templ</a> (this too)</li>
