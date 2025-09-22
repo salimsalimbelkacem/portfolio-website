@@ -1,14 +1,13 @@
+document.documentElement.classList.toggle( "dark", localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),);
+
 function lamp(params) {
 	lamp = document.createElement("img")
 	lamp.src="/static/images/lamp.png"
 
-	lamp_hover = "top-[20%] left-[80%] w-7 fixed cursor-grab"
-	lamp_grab =  "top-[20%] left-[80%] w-7 fixed cursor-grabbing"
-
-	lamp.className=lamp_hover
+	lamp.className="top-[20%] left-[80%] w-7 cursor-grab fixed hidden dark:block"
 
 	follower = document.createElement("div")
-	follower.className="top-[20%] left-[80%] bg-yellow-100 fixed w-30 h-30 blur-2xl -z-10 rounded-full animate-lamp-light"
+	follower.className="top-[20%] left-[80%] bg-none fixed dark:bg-yellow-100 w-30 h-30 blur-2xl -z-10 rounded-full animate-lamp-light"
 
 	follower.style.transform = "translate(-50%, -50%)";
 	lamp.style.transform = "translate(-50%, -50%)";
@@ -27,7 +26,8 @@ function lamp(params) {
 			e.preventDefault();
 			pos3 = e.clientX;
 			pos4 = e.clientY;
-			elmnt.className=lamp_grab
+			elmnt.classList.add("cursor-grabbing")
+			elmnt.classList.remove("cursor-grab")
 			document.onmouseup = closeDragElement;
 			document.onmousemove = elementDrag;
 		}
@@ -50,7 +50,9 @@ function lamp(params) {
 		function closeDragElement() {
 			document.onmouseup = null;
 			document.onmousemove = null;
-			elmnt.className=lamp_hover
+			elmnt.classList.remove("cursor-grabbing")
+			elmnt.classList.add("cursor-grab")
+//
 		}
 	}
 
