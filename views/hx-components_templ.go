@@ -17,7 +17,7 @@ import (
 var Routes = map[string]templ.Component{
 	"projects": Projects(),
 	"resume":   Resume(),
-	"tools":    Tools(),
+	"tools":    Tools(""),
 	"test":     Test(),
 	"about":    About(),
 }
@@ -84,7 +84,7 @@ func Home() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = Tools().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Tools("hidden md:flex").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -120,7 +120,7 @@ func container(title, fst_add_styles, sec_div_add_styles string) templ.Component
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var4 = []any{"md:w-1/2 flex flex-col border-3 dark:border-white my-2 md:my-0 mx-2 p-5" + fst_add_styles}
+		var templ_7745c5c3_Var4 = []any{"border-3 dark:border-white my-2 md:my-0 mx-2 p-2 md:p-5 flex flex-1 flex flex-col " + fst_add_styles}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var4...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -145,7 +145,7 @@ func container(title, fst_add_styles, sec_div_add_styles string) templ.Component
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs("container-" + increment(1))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 41, Col: 136}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 41, Col: 147}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -284,7 +284,7 @@ func About() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "<p class=\"px-4\">My name is Salim Belkacem, I am ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "<p>My name is Salim Belkacem, I am ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -329,7 +329,7 @@ type tools_ struct {
 	Icons []string
 }
 
-func Tools() templ.Component {
+func Tools(add_style string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -445,13 +445,13 @@ func Tools() templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, " <h2>I can't find icons of those</h2><div class=\"mb-0\"><ol><li><a href=\"https://echo.labstack.com/\">echo</a> (what i'm using for this website)</li><li><a href=\"https://templ.guide/\">templ</a> (this too)</li><li><a href=\"https://wazuh.com/\">wazuh</a></li><li><a href=\"https://www.fortinet.com/products/siem/fortisiem\">fortisiem</a></li><li><a href=\"https://ollama.com/\">ollama</a></li></ol></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, " <h2>I can't find icons of those</h2><div><ol><li><a href=\"https://echo.labstack.com/\">echo</a> (what i'm using for this website)</li><li><a href=\"https://templ.guide/\">templ</a> (this too)</li><li><a href=\"https://wazuh.com/\">wazuh</a></li><li><a href=\"https://www.fortinet.com/products/siem/fortisiem\">fortisiem</a></li><li><a href=\"https://ollama.com/\">ollama</a></li></ol></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = container("Tools I use", "", "[&>div]:flex-wrap [&>div]:mb-10 px-4 [&>div]:px-4 [&>div]:flex [&>div]:gap-5").Render(templ.WithChildren(ctx, templ_7745c5c3_Var18), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = container("Tools I use", add_style, "[&>div]:flex-wrap [&>div]:mb-10 [&>div]:flex [&>div]:gap-5").Render(templ.WithChildren(ctx, templ_7745c5c3_Var18), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
