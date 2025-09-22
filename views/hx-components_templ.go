@@ -151,7 +151,7 @@ func container(title, fst_add_styles, sec_div_add_styles string) templ.Component
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\"><div class=\"flex justify-between relative\"><h1 class=\"font-display-sans flex-shrink-0 mb-2 select-none\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\"><div class=\"flex justify-between relative py-2\"><h1 class=\"font-display-sans flex-shrink-0 mb-2 select-none\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -217,7 +217,7 @@ func container(title, fst_add_styles, sec_div_add_styles string) templ.Component
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var11 = []any{"min-h-0 overflow-y-scroll " + sec_div_add_styles}
+		var templ_7745c5c3_Var11 = []any{"min-h-0 overflow-y-scroll overflow-x-scroll " + sec_div_add_styles}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var11...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -585,7 +585,7 @@ func Projects() templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = container("projects", "", "px-4").Render(templ.WithChildren(ctx, templ_7745c5c3_Var29), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = container("projects", "", "").Render(templ.WithChildren(ctx, templ_7745c5c3_Var29), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
