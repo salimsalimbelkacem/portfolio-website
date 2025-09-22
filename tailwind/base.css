@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @font-face {
     font-family: 'gulax';
     src: url('/static/fonts/Gulax-Regular.woff2') format('woff2'),
@@ -31,20 +33,16 @@
 
 @layer base {
 	::selection, ::-moz-selection {
-		@apply bg-white text-black p-2;
+		@apply bg-black dark:bg-white text-white dark:text-black p-2;
 	}
-	body{
-		@apply cursor-default;
-	}
-	a, button{
-		@apply cursor-pointer;
-	}
-
-	h1{ @apply font-display-sans text-3xl; }
-	h2{ @apply font-display-sans text-xl; }
-	a { @apply underline; }
-	i { @apply text-4xl; }
-	p { @apply text-justify; }
+	body{	@apply cursor-default; }
+	a,
+	button{ @apply cursor-pointer; }
+	h1{	@apply font-display-sans text-3xl; }
+	h2{	@apply text-xl; }
+	a {	@apply underline; }
+	i {	@apply text-4xl; }
+	p {	@apply text-justify; }
 
 }
 
