@@ -4,7 +4,7 @@ function lamp(params) {
 	lamp = document.createElement("img")
 	lamp.src="/static/images/lamp.png"
 
-	lamp.className="top-[20%] left-[80%] w-7 cursor-grab fixed hidden dark:block"
+	lamp.className="top-[20%] left-[80%] z-10 w-7 cursor-grab fixed hidden dark:block"
 
 	follower = document.createElement("div")
 	follower.className="top-[20%] left-[80%] bg-none fixed dark:bg-yellow-100 w-30 h-30 blur-2xl -z-10 rounded-full animate-lamp-light"
