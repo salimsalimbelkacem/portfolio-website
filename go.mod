@@ -4,6 +4,7 @@ go 1.24.6
 
 require (
 	github.com/a-h/templ v0.3.943
+	github.com/aws/aws-lambda-go v1.50.0
 	github.com/labstack/echo/v4 v4.13.4
 )
 
