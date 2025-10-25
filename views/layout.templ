@@ -1,5 +1,23 @@
 package views
 
+templ Layout() {
+	<!DOCTYPE html>
+		<html lang="en" class="max-h-screen flex flex-col">
+			@head()
+			<body class="h-screen flex flex-col bg-indigo-50 dark:bg-black dark:text-white ">
+				@navbar()
+
+				<main class="flex-1 min-h-0 px-6 flex gap-4 order-3 md:order-2">
+						{ children... }
+				</main>
+
+				<script src="/static/scripts/script.js"></script>
+				@footer()
+			</body>
+
+		</html>
+}
+
 templ head() {
 	<head>
 		<meta charset="UTF-8">
@@ -17,52 +35,33 @@ templ head() {
 		</head>
 }
 
-templ theme_toggle_button(){
-	<button class="h-10 w-10 self-center"
-	onClick="document.documentElement.classList.toggle('dark')">
-		<svg class="fill-black block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-		    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-		</svg>
-		<svg class="fill-white hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-		    <path
-			d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-			fill-rule="evenodd" clip-rule="evenodd"></path>
-		</svg>
-	</button>
-}
-
 templ navbar() {
 	<header class="mx-6 mt-4 flex flex-col md:flex-row md:justify-between items-stretch order-1">
-		<h1 class="text-5xl md:text-5xl font-display-sans select-none">
-		<span>SALIM BELKACEM</span>
-		<img src="/static/images/wizard2.gif" class="w-20 hidden md:inline">
-		</h1>
+		<div class="flex justify-between">
+			<h1 class="text-5xl md:text-5xl font-display-sans select-none">
+			<span>SALIM BELKACEM</span>
+			<img src="/static/images/wizard2.gif" class="w-20 hidden md:inline">
+			</h1>
+
+			<div class="md:hidden self-center">
+			@theme_toggle_button()
+			</div>
+		</div>
 
 		@contacts()
 
 	</header>
 }
 
-templ Layout() {
-	<!DOCTYPE html>
-		<html lang="en" class="max-h-screen flex flex-col">
-			@head()
-			<body class="h-screen flex flex-col bg-indigo-50 dark:bg-black dark:text-white ">
-				@navbar()
-
-				<main class="flex-1 min-h-0 px-2 p-5 flex order-3 md:order-2"> //border-3 border-white mx-10">
-						{ children... }
-				</main>
-
-				<script src="/static/scripts/script.js"></script>
-				@footer()
-			</body>
-
-		</html>
+templ footer() {
+	<footer class="hidden md:flex md:justify-end md:px-10 md:py-4 md:order-last">
+		@theme_toggle_button()
+	</footer>
 }
 
+
 templ contacts(){
-	<ul class="flex gap-5 [&_i]:text-2xl justify-evenly
+	<ul class="flex gap-6 [&_i]:text-3xl justify-center py-3
 	md:justify-start [&_a]:no-underline md:self-center
 	pr-2">
 		<li>
@@ -87,8 +86,18 @@ templ contacts(){
 //	</li>
 	</ul>
 }
-templ footer() {
-	<footer class=" flex justify-between px-10 pb-4 order-last">
-		@theme_toggle_button()
-	</footer>
+
+templ theme_toggle_button(){
+	<button class="h-10 w-10 self-center"
+	onClick="document.documentElement.classList.toggle('dark')">
+		<svg class="fill-black block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+		    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+		</svg>
+		<svg class="fill-white hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+		    <path
+			d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+			fill-rule="evenodd" clip-rule="evenodd"></path>
+		</svg>
+	</button>
 }
+

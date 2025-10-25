@@ -38,7 +38,9 @@ func increment(by int) string{
 }
 
 templ container( title, fst_add_styles, sec_div_add_styles string){
-	<div class={"border-3 dark:border-white rounded-md my-2 md:my-0 mx-2 p-2 md:p-5 flex flex-1 flex-col " + fst_add_styles }id={"container-" + increment(1)}>
+	<div class={"border-2 dark:border-white rounded-sm my-2 md:my-0" +
+	"p-2 md:p-5 flex flex-1 flex-col " +
+	fst_add_styles }id={"container-" + increment(1)}>
 		<div class="flex justify-between relative py-2">
 			<h2 class="shrink-0 select-none">{title}</h2>
 
