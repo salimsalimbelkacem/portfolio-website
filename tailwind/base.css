@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+    font-family: 'gulax';
+    src: url('/static/fonts/Gulax-Regular.woff2') format('woff2'),
+         url('/static/fonts/Gulax-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Velvelyne';
+    src: url('/static/fonts/Velvelyne-Regular.woff2') format('woff2'),
+         url('/static/fonts/Velvelyne-Regular.woff') format('woff');
+}
+
+@theme {
+	--font-display-sans: "gulax", sans-serif;
+	--font-sans: "Velvelyne", sans-serif;
+
+	--cursor-default: url('/static/images/eye0.png') 21 10, default;
+	--cursor-pointer: url('/static/images/eye1.png') 21 10, default;
+	--cursor-grab: url('/static/images/hand0.png') 21 10, default;
+	--cursor-grabbing: url('/static/images/hand1.png') 21 10, default;
+	--animate-lamp-light:  pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+	@keyframes pulse {
+		50% { opacity: 0.85; }
+	}
+}
+
+@layer base {
+	::selection {
+		@apply bg-black text-white;
+	}
+	html.dark ::selection {
+		@apply bg-white text-black;
+	}
+	body{	@apply cursor-default; }
+	a,
+	button{	@apply cursor-pointer;}
+	h1{	@apply font-display-sans text-2xl; }
+	h2{	@apply text-xl; }
+	a {	@apply underline; }
+	i {
+		@apply text-4xl; 
+	}
+	p {	@apply text-justify; }
+
+}
+
+@source "../views/**/*.templ";
+@source "../static/scripts/script.js";

@@ -3,7 +3,6 @@ pnpm-lock.yaml
 go.sum
 .overmind.sock
 tmp/
-tailwind/
 cmd/
 handlers/
 bin/
