@@ -3,12 +3,10 @@ pnpm-lock.yaml
 go.sum
 .overmind.sock
 tmp/
-*.templ
 tailwind/
 cmd/
 handlers/
 bin/
 *.log
-Makefile
 Procfile
 .air.toml
