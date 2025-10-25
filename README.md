@@ -1,2 +1,2 @@
 # My portfolio website
-This is the vercel branch, nothing to setup in here
+This is the netlify branch, nothing to setup in here
