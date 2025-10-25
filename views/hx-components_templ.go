@@ -120,7 +120,9 @@ func container(title, fst_add_styles, sec_div_add_styles string) templ.Component
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var4 = []any{"border-3 dark:border-white my-2 md:my-0 mx-2 p-2 md:p-5 flex flex-1 flex flex-col " + fst_add_styles}
+		var templ_7745c5c3_Var4 = []any{"border-2 dark:border-white rounded-sm my-2 md:my-0" +
+			"p-2 md:p-5 flex flex-1 flex-col " +
+			fst_add_styles}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var4...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -145,26 +147,26 @@ func container(title, fst_add_styles, sec_div_add_styles string) templ.Component
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs("container-" + increment(1))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 41, Col: 147}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 43, Col: 48}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\"><div class=\"flex justify-between relative py-2\"><h1 class=\"font-display-sans flex-shrink-0 select-none\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\"><div class=\"flex justify-between relative py-2\"><h2 class=\"shrink-0 select-none\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 43, Col: 65}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 45, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</h1><button class=\"cursor-pointer focus:[&>svg]:rotate-180 focus:[&+div]:max-h-50\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" class=\"size-10 transition-transform ease-out duration-300\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m19.5 8.25-7.5 7.5-7.5-7.5\"></path></svg></button><div class=\"right-0 top-12 *:text-lg *:m-2 flex flex-col absolute bg-white dark:bg-black w-40 max-h-0 overflow-hidden transition-all duration-300 ease-in text-center\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</h2><button class=\"cursor-pointer focus:[&>svg]:rotate-180 focus:[&+div]:max-h-50\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" class=\"size-10 transition-transform ease-out duration-300\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m19.5 8.25-7.5 7.5-7.5-7.5\"></path></svg></button><div class=\"right-0 top-12 *:text-lg *:m-2 flex flex-col absolute bg-white dark:bg-black w-40 max-h-0 overflow-hidden transition-all duration-300 ease-in text-center\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -176,7 +178,7 @@ func container(title, fst_add_styles, sec_div_add_styles string) templ.Component
 			var templ_7745c5c3_Var8 string
 			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs("/hx/" + title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 54, Col: 33}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 56, Col: 33}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 			if templ_7745c5c3_Err != nil {
@@ -189,7 +191,7 @@ func container(title, fst_add_styles, sec_div_add_styles string) templ.Component
 			var templ_7745c5c3_Var9 string
 			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs("#container-" + increment(0))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 54, Col: 92}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 56, Col: 92}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
@@ -202,7 +204,7 @@ func container(title, fst_add_styles, sec_div_add_styles string) templ.Component
 			var templ_7745c5c3_Var10 string
 			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 54, Col: 100}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 56, Col: 100}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 			if templ_7745c5c3_Err != nil {
@@ -291,7 +293,7 @@ func About() templ.Component {
 			var templ_7745c5c3_Var15 string
 			templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(calc_age(birth_date).Format("06"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 66, Col: 69}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 68, Col: 69}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 			if templ_7745c5c3_Err != nil {
@@ -304,7 +306,7 @@ func About() templ.Component {
 			var templ_7745c5c3_Var16 string
 			templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs("for")
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 88, Col: 77}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 90, Col: 77}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 			if templ_7745c5c3_Err != nil {
@@ -386,20 +388,20 @@ func Tools(add_style string) templ.Component {
 					"editors and systems", []string{"archlinux", "debian", "neovim", "vim"},
 				},
 			} {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<h2>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<h3>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var19 string
 				templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(tools.Title)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 128, Col: 20}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 130, Col: 20}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</h2><div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</h3><div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -416,7 +418,7 @@ func Tools(add_style string) templ.Component {
 					var templ_7745c5c3_Var21 string
 					templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(icon)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 131, Col: 20}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 133, Col: 20}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 					if templ_7745c5c3_Err != nil {
@@ -445,7 +447,7 @@ func Tools(add_style string) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, " <h2>I can't find icons of those</h2><div><ol><li><a href=\"https://echo.labstack.com/\">echo</a> (what i'm using for this website)</li><li><a href=\"https://templ.guide/\">templ</a> (this too)</li><li><a href=\"https://wazuh.com/\">wazuh</a></li><li><a href=\"https://www.fortinet.com/products/siem/fortisiem\">fortisiem</a></li><li><a href=\"https://ollama.com/\">ollama</a></li></ol></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, " <h2>I can't find icons of those</h2><div><ol><li><a href=\"https://echo.labstack.com/\">echo</a></li><li><a href=\"https://templ.guide/\">templ</a></li><li><a href=\"https://wazuh.com/\">wazuh</a></li><li><a href=\"https://www.fortinet.com/products/siem/fortisiem\">fortisiem</a></li><li><a href=\"https://ollama.com/\">ollama</a></li><li><a href=\"https://zdoom.org/wiki/ZScript\">zscript</a> and <a href=\"https://zdoom.org/wiki/ACS\">acs</a></li></ol></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -480,14 +482,14 @@ func project_card(r githubrepo.Repo) templ.Component {
 			templ_7745c5c3_Var23 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<div class=\"my-10\"><h1><a href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<div class=\"my-10\"><h3><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var24 templ.SafeURL
 		templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinURLErrs(r.Htmlurl)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 151, Col: 23}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 154, Col: 23}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
 		if templ_7745c5c3_Err != nil {
@@ -500,39 +502,39 @@ func project_card(r githubrepo.Repo) templ.Component {
 		var templ_7745c5c3_Var25 string
 		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(r.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 151, Col: 33}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 154, Col: 33}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</a></h1><h2>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</a></h3><h4>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var26 string
 		templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(r.Descritption)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 152, Col: 20}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 155, Col: 20}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</h2><h4>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</h4><h5>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var27 string
 		templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(r.Language)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 153, Col: 16}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 156, Col: 16}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</h4></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</h5></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
