@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
@@ -42,7 +43,9 @@
 	h1{	@apply font-display-sans text-2xl; }
 	h2{	@apply text-xl; }
 	a {	@apply underline; }
-	i {	@apply text-4xl; }
+	i {
+		@apply text-4xl; 
+	}
 	p {	@apply text-justify; }
 
 }
