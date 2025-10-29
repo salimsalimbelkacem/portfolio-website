@@ -162,7 +162,7 @@ templ project_card( r githubrepo.Repo ){
 
 templ Projects(){
 	@container("projects", "", ""){
-		<p class="text-4xl  tracking-wider">listing repositories I own or colaborated in, that are hosted on github.</p>
+		<p class="text-4xl  tracking-wider">repositories I own or colaborated in, that are hosted on github.</p>
 		for _,repo := range githubrepo.GetReposList("salimsalimbelkacem"){
 			@project_card(repo)
 		}

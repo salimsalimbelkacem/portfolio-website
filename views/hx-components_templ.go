@@ -575,7 +575,7 @@ func Projects() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "<p class=\"text-4xl  tracking-wider\">listing repositories I own or colaborated in, that are hosted on github.</p>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "<p class=\"text-4xl  tracking-wider\">repositories I own or colaborated in, that are hosted on github.</p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
