@@ -38,11 +38,11 @@ func increment(by int) string{
 }
 
 templ container( title, fst_add_styles, sec_div_add_styles string){
-	<div class={"border-2 dark:border-white rounded-sm my-2 md:my-0" +
-	"p-2 md:p-5 flex flex-1 flex-col " +
+	<div class={"border-3 dark:border-white my-2 md:my-0" +
+	"p-2 md:p-4 flex flex-1 flex-col gap-5 " +
 	fst_add_styles }id={"container-" + increment(1)}>
-		<div class="flex justify-between relative py-2">
-			<h2 class="shrink-0 select-none">{title}</h2>
+		<div class="flex justify-between relative">
+			<h2 class="shrink-0 select-none self-center">{title}</h2>
 
 			<button class="cursor-pointer focus:[&>svg]:rotate-180 focus:[&+div]:max-h-50">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -63,11 +63,11 @@ templ container( title, fst_add_styles, sec_div_add_styles string){
 }
 
 templ About(){
-	@container( "About me", "", "[&_br]:mb-4" ){
-		<p>
+	@container( "About me", "", "[&_br]:m-4" ){
+		<p class="text-4xl tracking-wider">
 			My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
-			I study computer science with a passion for software development 
-			and cybersecurity. I love exploring new technologies and programming 
+			I study computer science with a passion for software development.
+			I love exploring new technologies and programming 
 			languages. <br>
 
 			I graduated with a bachelor degree in network infrastructure and cybersecurity,
@@ -80,7 +80,7 @@ templ About(){
 			Within it I most notably had the role of co-organizing a capture the flag event
 			that went for 48 hours. With the help of the <a href="https://www.shellmates.club/">
 			shellmates club</a> we crafted a serie of chalenges, and deployed them using docker
-			on the cloud using google's services.
+			and google cloud.
 			<br>
 
 			For a period of 7 weeks I was an intern among the soc team at
@@ -127,7 +127,7 @@ templ Tools(add_style string){
 					"editors and systems", []string{"archlinux", "debian", "neovim", "vim", },
 				},
 			}{
-				<h3>{tools.Title}</h3>
+				<h2>{tools.Title}</h2>
 				<div>
 					for _, icon := range tools.Icons{
 						<i title={icon} class={"devicon-"+ icon +"-plain"}></i>
@@ -151,15 +151,15 @@ templ Tools(add_style string){
 templ project_card( r githubrepo.Repo ){
 // name, url, description, language
 <div class="my-10">
-	<h3><a href={r.Htmlurl}> {r.Name} </a></h3>
-	<h4>{r.Descritption}</h4>
-	<h5>{r.Language}</h5>
+	<h2><a href={r.Htmlurl}> {r.Name} </a></h2>
+	<h3>{r.Descritption}</h3>
+	<h4>{r.Language}</h4>
 </div>
 }
 
 templ Projects(){
 	@container("projects", "", ""){
-		<p>I am just listing repositories I own or colaborated in, that are hosted on github, the only notable project is the cis one ig</p>
+		<p class="text-4xl  tracking-wider">listing repositories I own or colaborated in, that are hosted on github.</p>
 		for _,repo := range githubrepo.GetReposList("salimsalimbelkacem"){
 			@project_card(repo)
 		}
