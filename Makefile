@@ -33,7 +33,7 @@ static/style.css: $(TAILWIND_DIR)/base.css views/*.go
 
 $(GO-OUT): $(GO-IN)
 	go build -o $(GO-OUT) ./cmd
-build: static/style.css views/*.go $(GO-OUT)
+build: static/style.css views/*.go
 
 # setup
 $(TAILWIND_DIR)/node_modules: $(TAILWIND_DIR)/$(LOCKFILE)

@@ -120,8 +120,8 @@ func container(title, fst_add_styles, sec_div_add_styles string) templ.Component
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var4 = []any{"border-2 dark:border-white rounded-sm my-2 md:my-0" +
-			"p-2 md:p-5 flex flex-1 flex-col " +
+		var templ_7745c5c3_Var4 = []any{"border-3 dark:border-white my-2 md:my-0" +
+			"p-2 md:p-4 flex flex-1 flex-col gap-5 " +
 			fst_add_styles}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var4...)
 		if templ_7745c5c3_Err != nil {
@@ -153,14 +153,14 @@ func container(title, fst_add_styles, sec_div_add_styles string) templ.Component
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\"><div class=\"flex justify-between relative py-2\"><h2 class=\"shrink-0 select-none\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\"><div class=\"flex justify-between relative\"><h2 class=\"shrink-0 select-none self-center\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 45, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/hx-components.templ`, Line: 45, Col: 54}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -286,7 +286,7 @@ func About() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "<p>My name is Salim Belkacem, I am ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "<p class=\"text-4xl tracking-wider\">My name is Salim Belkacem, I am ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -299,7 +299,7 @@ func About() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, " years old. I study computer science with a passion for software development  and cybersecurity. I love exploring new technologies and programming  languages. <br>I graduated with a bachelor degree in network infrastructure and cybersecurity, at Numidia Institute of Technology, Algiers, in july 2025. <br>During my time at NIT I was a member then co-manager in <a href=\"https://www.instagram.com/ncs._club/\">the NCS scientific club.</a><br>Within it I most notably had the role of co-organizing a capture the flag event that went for 48 hours. With the help of the <a href=\"https://www.shellmates.club/\">shellmates club</a> we crafted a serie of chalenges, and deployed them using docker on the cloud using google's services.<br>For a period of 7 weeks I was an intern among the soc team at <a href=\"https://unidees.dz\">unidees</a> , and during that time I alongside my internship partner had the chance to learn about SIEMs, security and developed a deepseek wrapper for CIS remidiations that were detected inside a FOSS SIEM called wazuh, and presented the project as our end of study project ")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, " years old. I study computer science with a passion for software development. I love exploring new technologies and programming  languages. <br>I graduated with a bachelor degree in network infrastructure and cybersecurity, at Numidia Institute of Technology, Algiers, in july 2025. <br>During my time at NIT I was a member then co-manager in <a href=\"https://www.instagram.com/ncs._club/\">the NCS scientific club.</a><br>Within it I most notably had the role of co-organizing a capture the flag event that went for 48 hours. With the help of the <a href=\"https://www.shellmates.club/\">shellmates club</a> we crafted a serie of chalenges, and deployed them using docker and google cloud.<br>For a period of 7 weeks I was an intern among the soc team at <a href=\"https://unidees.dz\">unidees</a> , and during that time I alongside my internship partner had the chance to learn about SIEMs, security and developed a deepseek wrapper for CIS remidiations that were detected inside a FOSS SIEM called wazuh, and presented the project as our end of study project ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -318,7 +318,7 @@ func About() templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = container("About me", "", "[&_br]:mb-4").Render(templ.WithChildren(ctx, templ_7745c5c3_Var14), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = container("About me", "", "[&_br]:m-4").Render(templ.WithChildren(ctx, templ_7745c5c3_Var14), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -388,7 +388,7 @@ func Tools(add_style string) templ.Component {
 					"editors and systems", []string{"archlinux", "debian", "neovim", "vim"},
 				},
 			} {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<h3>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "<h2>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -401,7 +401,7 @@ func Tools(add_style string) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</h3><div>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</h2><div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -482,7 +482,7 @@ func project_card(r githubrepo.Repo) templ.Component {
 			templ_7745c5c3_Var23 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<div class=\"my-10\"><h3><a href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "<div class=\"my-10\"><h2><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -508,7 +508,7 @@ func project_card(r githubrepo.Repo) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</a></h3><h4>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</a></h2><h3>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -521,7 +521,7 @@ func project_card(r githubrepo.Repo) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</h4><h5>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</h3><h4>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -534,7 +534,7 @@ func project_card(r githubrepo.Repo) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</h5></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</h4></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -575,7 +575,7 @@ func Projects() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "<p>I am just listing repositories I own or colaborated in, that are hosted on github, the only notable project is the cis one ig</p>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "<p class=\"text-4xl  tracking-wider\">listing repositories I own or colaborated in, that are hosted on github.</p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
