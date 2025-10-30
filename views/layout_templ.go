@@ -201,7 +201,7 @@ func contacts() templ.Component {
 			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<ul class=\"flex gap-6 [&_i]:text-3xl justify-center py-3\n\tmd:justify-start [&_a]:no-underline md:self-center\n\tpr-2\"><li><a href=\"https://github.com/salimsalimbelkacem\"><i class=\"nf nf-cod-github\"></i></a></li><li><a href=\"https://www.linkedin.com/in/salim-belkacem-7a76b7341\"><i class=\"nf nf-dev-linkedin\"></i></a></li><li><a href=\"mailto:salimbelkacemm.protonmail.com\"><i class=\"nf nf-cod-mail\"></i></a></li></ul>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<ul class=\"flex gap-6 [&_i]:text-3xl justify-center py-3\n\tmd:justify-start [&_a]:no-underline md:self-center\n\tpr-2\"><li><a href=\"https://github.com/salimsalimbelkacem\"><i class=\"nf nf-cod-github\"></i></a></li><li><a href=\"https://www.linkedin.com/in/salim-belkacem-7a76b7341\"><i class=\"nf nf-dev-linkedin\"></i></a></li><li><a href=\"mailto:salim.belkacemm@protonmail.com\"><i class=\"nf nf-cod-mail\"></i></a></li></ul>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
