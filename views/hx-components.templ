@@ -42,23 +42,33 @@ templ container( title, fst_add_styles, sec_div_add_styles string){
 	"p-2 md:p-4 flex flex-1 flex-col gap-5 " +
 	fst_add_styles }id={"container-" + increment(1)}>
 		<div class="flex justify-between relative">
-			<h2 class="shrink-0 select-none self-center">{title}</h2>
-
-			<button class="cursor-pointer focus:[&>svg]:rotate-180 focus:[&+div]:max-h-50">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-					stroke-width="2" stroke="currentColor" class="size-10 transition-transform ease-out duration-300">
-					<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-				</svg>
-			</button>
-
-			<div class="right-0 top-12 *:text-lg *:m-2 flex flex-col absolute bg-white dark:bg-black w-40 max-h-0 overflow-hidden transition-all duration-300 ease-in text-center">
-				for _, title := range []string{"about", "projects", "resume", "tools", } {
-					<button hx-get={"/hx/"+title} hx-swap="outerHTML" hx-target={"#container-"+increment(0)}>{title}</button>
-				}
-			</div>
+			<h2 class="text-3xl shrink-0 select-none self-center">{title}</h2>
+			@expandButton()
+			@expandableMenu()
 		</div>
 
 		<div class={ "min-h-0 overflow-y-scroll overflow-x-scroll "+ sec_div_add_styles }> { children... } </div>
+	</div>
+}
+
+templ expandButton(){
+	<button class="cursor-pointer focus:[&>svg]:rotate-180 focus:[&+div]:max-h-100">
+
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+		stroke-width="3"
+		stroke="currentColor" class="size-11 transition-transform ease-out duration-500">
+
+		<path stroke-linecap="square" stroke-linejoin="miter" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+		</svg>
+	</button>
+}
+
+templ expandableMenu(){
+	<div class="right-0 top-12 flex flex-col absolute bg-white dark:bg-black w-40 max-h-0 overflow-hidden transition-all duration-500 ease-in text-center">
+		for _, title := range []string{"about", "projects", "resume", "tools", } {
+			<button hx-get={"/hx/"+title} hx-swap="outerHTML" hx-target={"#container-"+increment(0)}
+			class="hover:bg-white/10 text-2xl p-2 transition-all duration-200 ease-out">{title}</button>
+		}
 	</div>
 }
 
@@ -84,7 +94,7 @@ templ About(){
 			<br>
 
 			For a period of 7 weeks I was an intern among the soc team at
-			<a href="https://unidees.dz">unidees</a> , and during that time I alongside my
+			<a href="https://unidees.dz">unidees</a>, and during that time I alongside my
 			internship partner had the chance to learn about SIEMs, security and developed
 			a deepseek wrapper for CIS remidiations that were detected inside a FOSS SIEM
 			called wazuh, and presented the project as our end of study project {"for"} our
