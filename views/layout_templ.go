@@ -164,7 +164,7 @@ func footer() templ.Component {
 			templ_7745c5c3_Var4 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<footer class=\"hidden md:flex md:justify-end md:px-10 md:py-4 md:order-last\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<footer class=\"hidden md:flex items-center md:justify-between md:px-10 md:py-4 md:order-last\"><a href=\"https://github.com/salimsalimbelkacem/portfolio-website\">source code</a>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
