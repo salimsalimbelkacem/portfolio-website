@@ -1,25 +1,21 @@
 .PHONY: setup build clean clean-all all server
 
-GO-OUT := ./bin/app
-GO_FILES := cmd/* handlers/*
-
-TAILWIND_DIR := ./tailwind
-NPM := pnpm
+include config.mk
 
 ifeq ($(NPM), pnpm)
-LOCKFILE = pnpm-lock.yaml
+LOCKFILE = $(TAILWIND_DIR)/pnpm-lock.yaml
 TLWD_CMD = pnpm --prefix $(TAILWIND_DIR) 
 
 else ifeq ($(NPM), npm)
-LOCKFILE = package-lock.json
+LOCKFILE = $(TAILWIND_DIR)/package-lock.json
 TLWD_CMD = npm --prefix $(TAILWIND_DIR)
 
 else ifeq ($(NPM), bun)
-LOCKFILE = bun.lock
+LOCKFILE = $(TAILWIND_DIR)/bun.lock
 TLWD_CMD = cd $(TAILWIND_DIR) && bun
 
 else ifeq ($(NPM), yarn)
-LOCKFILE = yarn.lock
+LOCKFILE = $(TAILWIND_DIR)/yarn.lock
 TLWD_CMD = yarn --cwd $(TAILWIND_DIR)
 endif
 
@@ -32,7 +28,7 @@ static/style.css: $(TAILWIND_DIR)/base.css views/*.go
 	$(TLWD_CMD) run gen-css
 
 $(GO-OUT): $(GO-IN)
-	go build -o $(GO-OUT) ./cmd
+	go build -v -o $(GO-OUT) ./cmd
 build: static/style.css views/*.go $(GO-OUT)
 
 # setup
@@ -51,7 +47,7 @@ clean:
 	@rm -rfv static/style.css views/*_templ.go bin tmp 
 
 clean-all: clean
-	@rm -rfv $(TAILWIND_DIR)/package-lock.json $(TAILWIND_DIR)/yarn.lock $(TAILWIND_DIR)/pnpm-lock.yaml $(TAILWIND_DIR)/bun.lock $(TAILWIND_DIR)/node_modules go.sum
+	rm -rfv $(LOCKFILE) $(TAILWIND_DIR)/node_modules go.sum
 
 server:
 	$(GO-OUT)

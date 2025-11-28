@@ -27,7 +27,7 @@ Using `make build` will only build the project
 
 # Node Package Manager
 By default tailwind will be installed using pnpm so
-if you want to use `npm`, `yarn` or `bun` for setup and build:
-`make NPM=<your-package-manager>`
+if you want to use `npm`, `yarn` or `bun` for setup and build, edit the `NPM` variable
+inside [config.mk](./config.mk)
 
 > Only the ones specified are suported
