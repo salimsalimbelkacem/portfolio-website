@@ -15,7 +15,6 @@ import (
 	"github.com/salimsalimbelkacem/portfolio-website/views"
 )
 
-// --- Templ render helper ---
 func rendTempl(layout templ.Component, component templ.Component) func(c echo.Context) error {
 	return func(c echo.Context) error {
 		if layout != nil {
@@ -25,7 +24,6 @@ func rendTempl(layout templ.Component, component templ.Component) func(c echo.Co
 	}
 }
 
-// --- Echo app setup ---
 var app *echo.Echo
 
 func init() {
@@ -41,7 +39,6 @@ func init() {
 	}
 }
 
-// --- Lambda adapter ---
 type responseCapture struct {
 	header     http.Header
 	bodyBuffer bytes.Buffer
@@ -59,25 +56,20 @@ func (r *responseCapture) Header() http.Header         { return r.header }
 func (r *responseCapture) Write(b []byte) (int, error) { return r.bodyBuffer.Write(b) }
 func (r *responseCapture) WriteHeader(code int)        { r.statusCode = code }
 
-// --- Lambda handler ---
 func handler(ctx context.Context, req events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
-	// Create an HTTP request Echo can understand
 	body := io.NopCloser(bytes.NewBufferString(req.Body))
 	r, err := http.NewRequestWithContext(ctx, req.HTTPMethod, req.Path, body)
 	if err != nil {
 		return errorResponse(http.StatusInternalServerError, "failed to create request"), nil
 	}
 
-	// Copy headers from API Gateway
 	for k, v := range req.Headers {
 		r.Header.Set(k, v)
 	}
 
-	// Capture Echo’s output
 	w := newResponseCapture()
 	app.ServeHTTP(w, r)
 
-	// Prepare response
 	return &events.APIGatewayProxyResponse{
 		StatusCode: w.statusCode,
 		Headers: map[string]string{
@@ -95,7 +87,6 @@ func errorResponse(status int, msg string) *events.APIGatewayProxyResponse {
 	}
 }
 
-// --- Entrypoint ---
 func main() {
 	lambda.Start(handler)
 }
