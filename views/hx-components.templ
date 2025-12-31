@@ -19,10 +19,18 @@ templ Test(){
 
 var birth_date time.Time = time.Date(2004, 12, 31, 0, 0, 0, 0, time.UTC)
 
-func calc_age(birth_date time.Time) (age time.Time){
-	Now := time.Now()
-	age = time.Date(Now.Year() - birth_date.Year(), Now.Month()-birth_date.Month(), Now.Day()-birth_date.Day(), 0, 0, 0, 0, time.UTC)
-	return
+func calcAge(birthDate time.Time) int {
+	now := time.Now()
+
+	age := now.Year() - birthDate.Year()
+
+	// If birthday hasn't occurred yet this year, subtract 1
+	if now.Month() < birthDate.Month() ||
+		(now.Month() == birthDate.Month() && now.Day() < birthDate.Day()) {
+		age--
+	}
+
+	return age
 }
 
 templ Home(){ // it's a flex container !
@@ -75,7 +83,7 @@ templ expandableMenu(){
 templ About(){
 	@container( "About me", "", "[&_br]:mb-10" ){
 		<p class="text-4xl tracking-wider">
-			My name is Salim Belkacem, I am {calc_age(birth_date).Format("06")} years old.
+			My name is Salim Belkacem, I am {calcAge(birth_date)} years old.
 			I study computer science with a passion for software development.
 			I love exploring new technologies and programming 
 			languages. <br>
